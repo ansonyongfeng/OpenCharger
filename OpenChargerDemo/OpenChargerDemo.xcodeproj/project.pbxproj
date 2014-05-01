@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3EC6A27119129AC100FDA032 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC6A27019129AC100FDA032 /* MainViewController.m */; };
+		3EC6A2731912A11A00FDA032 /* power button.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EC6A2721912A11A00FDA032 /* power button.png */; };
+		3EC6A2751912A1C900FDA032 /* refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EC6A2741912A1C900FDA032 /* refresh.png */; };
+		3EC6A2771912A2BF00FDA032 /* exit.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EC6A2761912A2BF00FDA032 /* exit.png */; };
+		3EC6A2791912A2EE00FDA032 /* network.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EC6A2781912A2EE00FDA032 /* network.png */; };
+		3EC6A27B1912A68900FDA032 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EC6A27A1912A68900FDA032 /* CoreLocation.framework */; };
+		3EC6A27D1912A69200FDA032 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EC6A27C1912A69200FDA032 /* CoreBluetooth.framework */; };
+		3EC6A2811912A6FE00FDA032 /* OpenChargerSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC6A2801912A6FE00FDA032 /* OpenChargerSDK.m */; };
 		C5D8DB3E191149C10062CCC1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5D8DB3D191149C10062CCC1 /* Foundation.framework */; };
 		C5D8DB40191149C10062CCC1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5D8DB3F191149C10062CCC1 /* CoreGraphics.framework */; };
 		C5D8DB42191149C10062CCC1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5D8DB41191149C10062CCC1 /* UIKit.framework */; };
@@ -14,8 +22,6 @@
 		C5D8DB4A191149C10062CCC1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C5D8DB49191149C10062CCC1 /* main.m */; };
 		C5D8DB4E191149C10062CCC1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C5D8DB4D191149C10062CCC1 /* AppDelegate.m */; };
 		C5D8DB51191149C10062CCC1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5D8DB4F191149C10062CCC1 /* Main.storyboard */; };
-		C5D8DB54191149C10062CCC1 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5D8DB53191149C10062CCC1 /* FirstViewController.m */; };
-		C5D8DB57191149C10062CCC1 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C5D8DB56191149C10062CCC1 /* SecondViewController.m */; };
 		C5D8DB59191149C10062CCC1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5D8DB58191149C10062CCC1 /* Images.xcassets */; };
 		C5D8DB60191149C10062CCC1 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5D8DB5F191149C10062CCC1 /* XCTest.framework */; };
 		C5D8DB61191149C10062CCC1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5D8DB3D191149C10062CCC1 /* Foundation.framework */; };
@@ -35,6 +41,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3EC6A26F19129AC100FDA032 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		3EC6A27019129AC100FDA032 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		3EC6A2721912A11A00FDA032 /* power button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "power button.png"; sourceTree = "<group>"; };
+		3EC6A2741912A1C900FDA032 /* refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh.png; sourceTree = "<group>"; };
+		3EC6A2761912A2BF00FDA032 /* exit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exit.png; sourceTree = "<group>"; };
+		3EC6A2781912A2EE00FDA032 /* network.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = network.png; sourceTree = "<group>"; };
+		3EC6A27A1912A68900FDA032 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		3EC6A27C1912A69200FDA032 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		3EC6A27F1912A6FE00FDA032 /* OpenChargerSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenChargerSDK.h; sourceTree = "<group>"; };
+		3EC6A2801912A6FE00FDA032 /* OpenChargerSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenChargerSDK.m; sourceTree = "<group>"; };
+		3EC6A2821912A81400FDA032 /* OCDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDefines.h; sourceTree = "<group>"; };
 		C5D8DB3A191149C10062CCC1 /* OpenChargerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenChargerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5D8DB3D191149C10062CCC1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C5D8DB3F191149C10062CCC1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -46,10 +63,6 @@
 		C5D8DB4C191149C10062CCC1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C5D8DB4D191149C10062CCC1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C5D8DB50191149C10062CCC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C5D8DB52191149C10062CCC1 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		C5D8DB53191149C10062CCC1 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		C5D8DB55191149C10062CCC1 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		C5D8DB56191149C10062CCC1 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		C5D8DB58191149C10062CCC1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C5D8DB5E191149C10062CCC1 /* OpenChargerDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenChargerDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5D8DB5F191149C10062CCC1 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -63,6 +76,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EC6A27D1912A69200FDA032 /* CoreBluetooth.framework in Frameworks */,
+				3EC6A27B1912A68900FDA032 /* CoreLocation.framework in Frameworks */,
 				C5D8DB40191149C10062CCC1 /* CoreGraphics.framework in Frameworks */,
 				C5D8DB42191149C10062CCC1 /* UIKit.framework in Frameworks */,
 				C5D8DB3E191149C10062CCC1 /* Foundation.framework in Frameworks */,
@@ -82,6 +97,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3EC6A27E1912A6BE00FDA032 /* OpenCharger SDK */ = {
+			isa = PBXGroup;
+			children = (
+				3EC6A27F1912A6FE00FDA032 /* OpenChargerSDK.h */,
+				3EC6A2801912A6FE00FDA032 /* OpenChargerSDK.m */,
+				3EC6A2821912A81400FDA032 /* OCDefines.h */,
+			);
+			path = "OpenCharger SDK";
+			sourceTree = "<group>";
+		};
 		C5D8DB31191149C10062CCC1 = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +129,8 @@
 		C5D8DB3C191149C10062CCC1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3EC6A27C1912A69200FDA032 /* CoreBluetooth.framework */,
+				3EC6A27A1912A68900FDA032 /* CoreLocation.framework */,
 				C5D8DB3D191149C10062CCC1 /* Foundation.framework */,
 				C5D8DB3F191149C10062CCC1 /* CoreGraphics.framework */,
 				C5D8DB41191149C10062CCC1 /* UIKit.framework */,
@@ -118,11 +145,10 @@
 				C5D8DB4C191149C10062CCC1 /* AppDelegate.h */,
 				C5D8DB4D191149C10062CCC1 /* AppDelegate.m */,
 				C5D8DB4F191149C10062CCC1 /* Main.storyboard */,
-				C5D8DB52191149C10062CCC1 /* FirstViewController.h */,
-				C5D8DB53191149C10062CCC1 /* FirstViewController.m */,
-				C5D8DB55191149C10062CCC1 /* SecondViewController.h */,
-				C5D8DB56191149C10062CCC1 /* SecondViewController.m */,
+				3EC6A26F19129AC100FDA032 /* MainViewController.h */,
+				3EC6A27019129AC100FDA032 /* MainViewController.m */,
 				C5D8DB58191149C10062CCC1 /* Images.xcassets */,
+				3EC6A27E1912A6BE00FDA032 /* OpenCharger SDK */,
 				C5D8DB44191149C10062CCC1 /* Supporting Files */,
 			);
 			path = OpenChargerDemo;
@@ -131,6 +157,10 @@
 		C5D8DB44191149C10062CCC1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3EC6A2741912A1C900FDA032 /* refresh.png */,
+				3EC6A2721912A11A00FDA032 /* power button.png */,
+				3EC6A2761912A2BF00FDA032 /* exit.png */,
+				3EC6A2781912A2EE00FDA032 /* network.png */,
 				C5D8DB45191149C10062CCC1 /* OpenChargerDemo-Info.plist */,
 				C5D8DB46191149C10062CCC1 /* InfoPlist.strings */,
 				C5D8DB49191149C10062CCC1 /* main.m */,
@@ -233,9 +263,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EC6A2791912A2EE00FDA032 /* network.png in Resources */,
+				3EC6A2731912A11A00FDA032 /* power button.png in Resources */,
 				C5D8DB59191149C10062CCC1 /* Images.xcassets in Resources */,
 				C5D8DB48191149C10062CCC1 /* InfoPlist.strings in Resources */,
 				C5D8DB51191149C10062CCC1 /* Main.storyboard in Resources */,
+				3EC6A2751912A1C900FDA032 /* refresh.png in Resources */,
+				3EC6A2771912A2BF00FDA032 /* exit.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,10 +288,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5D8DB57191149C10062CCC1 /* SecondViewController.m in Sources */,
 				C5D8DB4E191149C10062CCC1 /* AppDelegate.m in Sources */,
-				C5D8DB54191149C10062CCC1 /* FirstViewController.m in Sources */,
+				3EC6A27119129AC100FDA032 /* MainViewController.m in Sources */,
 				C5D8DB4A191149C10062CCC1 /* main.m in Sources */,
+				3EC6A2811912A6FE00FDA032 /* OpenChargerSDK.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,6 +496,7 @@
 				C5D8DB71191149C10062CCC1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C5D8DB72191149C10062CCC1 /* Build configuration list for PBXNativeTarget "OpenChargerDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -470,6 +505,7 @@
 				C5D8DB74191149C10062CCC1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
