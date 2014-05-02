@@ -22,8 +22,10 @@
 @property (weak, nonatomic) IBOutlet UITextField *uuid5;
 @property (weak, nonatomic) IBOutlet UITextField *openChargerCode;
 @property (weak, nonatomic) IBOutlet UISlider *minsSlider;
+@property (weak, nonatomic) IBOutlet UILabel *powerStatusLabel;
 
 
 @property (weak, nonatomic) IBOutlet UIButton *connectButton;
+@property (weak, nonatomic) IBOutlet UILabel *chargeTimeLabel;
 
 @end

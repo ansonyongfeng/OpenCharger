@@ -40,6 +40,14 @@
     self.uuid3.delegate = self;
     self.uuid4.delegate = self;
     self.uuid5.delegate = self;
+    self.openChargerCode.delegate = self;
+    
+    //Battery
+    [self loadBatteryStatus];
+    
+    //Slider
+    [self.minsSlider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -49,7 +57,7 @@
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    NSLog(@"%d",textField.tag);
+    NSLog(@"%ld",(long)textField.tag);
     NSUInteger newLength = [textField.text length] + [string length] - range.length;
     if (textField.tag == 1) {
         
@@ -64,36 +72,83 @@
     else{
         return YES;
     }
-    
 }
 
-/*
-#pragma mark - Navigation
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if(textField == self.uuid1) {
+        [self.uuid2 becomeFirstResponder];
+    } else if(textField == self.uuid2) {
+        [self.uuid3 becomeFirstResponder];
+    }else if(textField == self.uuid3) {
+        [self.uuid4 becomeFirstResponder];
+    }else if(textField == self.uuid4) {
+        [self.uuid5 becomeFirstResponder];
+    }else if(textField == self.uuid5) {
+        [self.openChargerCode becomeFirstResponder];
+    }
+    else{
+        [textField resignFirstResponder];
+    }
+    return NO;
+}
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)loadBatteryStatus{
+    [[UIDevice currentDevice] setBatteryMonitoringEnabled:YES];
+    float batteryLevel = [[UIDevice currentDevice] batteryLevel];
+    batteryLevel *= 100;
+    self.powerStatusLabel.text = [NSString stringWithFormat:@"%.0f\uFF05", batteryLevel];
+    float chargeTime = 1.20*(100-batteryLevel);
+    self.chargeTimeLabel.text = [NSString stringWithFormat:@"%.0f mins", chargeTime];
+    if (chargeTime < 10) {
+        myChargeTime = [NSString stringWithFormat:@"000%.0f", chargeTime];
+    }
+    else if (chargeTime < 100){
+        myChargeTime = [NSString stringWithFormat:@"00%.0f", chargeTime];
+    }
+    else if (chargeTime < 1000){
+        myChargeTime = [NSString stringWithFormat:@"0%.0f", chargeTime];
+    }else{
+        myChargeTime = [NSString stringWithFormat:@"%.0f", chargeTime];
+    }
+    self.minsSlider.value = ceil(chargeTime);
+    NSLog(@"%@", myChargeTime);
 }
-*/
-- (IBAction)sliderValueChenged:(id)sender {
+
+- (IBAction)sliderValueChanged:(id)sender {
+    UISlider *slider = (UISlider *)sender;
+    float chargeTime = slider.value;
+    self.chargeTimeLabel.text = [NSString stringWithFormat:@"%.0f mins", chargeTime];
+    if (chargeTime < 10) {
+        myChargeTime = [NSString stringWithFormat:@"000%.0f", chargeTime];
+    }
+    else if (chargeTime < 100){
+        myChargeTime = [NSString stringWithFormat:@"00%.0f", chargeTime];
+    }
+    else if (chargeTime < 1000){
+        myChargeTime = [NSString stringWithFormat:@"0%.0f", chargeTime];
+    }else{
+        myChargeTime = [NSString stringWithFormat:@"%.0f", chargeTime];
+    }
 }
+
 
 - (IBAction)connectButtonPressed:(id)sender {
+    //set myUUID
+    myUUID = [NSString stringWithFormat:@"%@-%@-%@-%@-%@", self.uuid1.text, self.uuid2.text, self.uuid3.text, self.uuid4.text, self.uuid5.text];
+    //set myOpenChargerCode
+    myOpenChargerCode = self.openChargerCode.text;
     double timeout = 3;
-    //add ActivityIndicatorViewController Subview
     [self.OC findBLEPeripherals:timeout];
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(timeout * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         //NSLog(@"/%lu", (unsigned long)[self.OC.peripherals count]);
-        NSString *thisUUID = @"B4560D2B-EFBA-D6CC-9E96-FFDB6572A859";
+        //NSString *thisUUID = @"B4560D2B-EFBA-D6CC-9E96-FFDB6572A859";
         for (int i=0; i< (unsigned long)[self.OC.peripherals count]; i++) {
             CBPeripheral *seletedPeripheral = [self.OC.peripherals objectAtIndex:i];
             NSString *identifierString = [NSString stringWithFormat:@"%@", seletedPeripheral.identifier];
             NSArray *uuidArray = [identifierString componentsSeparatedByString:@" "];
             NSString *seletedUUID = [uuidArray objectAtIndex:2];
-            if ([thisUUID isEqualToString:seletedUUID]) {
+            if ([myUUID isEqualToString:seletedUUID]) {
                 NSLog(@"%@",seletedPeripheral);
                 [self.OC connectPeripheral:seletedPeripheral];
                 [self.OC didDiscoverCharacteristicsBlock:^(id response, NSError *error) {
@@ -108,9 +163,17 @@
                             //NSString *recv = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
                         }];
                         //turn OC on
-                        [self.OC sendCodeToOpenCharger:seletedPeripheral openChargerCode:@"123456789012" chargeTime:@"0002"];
+                        [self.OC sendCodeToOpenCharger:seletedPeripheral openChargerCode:myOpenChargerCode chargeTime:myChargeTime];
+                        NSLog(@"%@%@",myOpenChargerCode, myChargeTime);
                     });
                 }];
+            }else{
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Information"
+                                                                message:@"UUID is not correct!"
+                                                               delegate:self
+                                                      cancelButtonTitle:nil
+                                                      otherButtonTitles:@"OK", nil];
+                [alert show];
             }
         }
     });
