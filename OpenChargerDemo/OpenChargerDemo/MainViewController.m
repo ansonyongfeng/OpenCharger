@@ -57,7 +57,6 @@
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    NSLog(@"%ld",(long)textField.tag);
     NSUInteger newLength = [textField.text length] + [string length] - range.length;
     if (textField.tag == 1) {
         
@@ -90,6 +89,9 @@
         [textField resignFirstResponder];
     }
     return NO;
+}
+- (IBAction)refreshButtonPressed:(id)sender {
+    [self loadBatteryStatus];
 }
 
 -(void)loadBatteryStatus{
@@ -141,7 +143,6 @@
     [self.OC findBLEPeripherals:timeout];
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(timeout * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        //NSLog(@"/%lu", (unsigned long)[self.OC.peripherals count]);
         //NSString *thisUUID = @"B4560D2B-EFBA-D6CC-9E96-FFDB6572A859";
         for (int i=0; i< (unsigned long)[self.OC.peripherals count]; i++) {
             CBPeripheral *seletedPeripheral = [self.OC.peripherals objectAtIndex:i];
@@ -164,7 +165,7 @@
                         }];
                         //turn OC on
                         [self.OC sendCodeToOpenCharger:seletedPeripheral openChargerCode:myOpenChargerCode chargeTime:myChargeTime];
-                        NSLog(@"%@%@",myOpenChargerCode, myChargeTime);
+                        //NSLog(@"%@%@",myOpenChargerCode, myChargeTime);
                     });
                 }];
             }else{
