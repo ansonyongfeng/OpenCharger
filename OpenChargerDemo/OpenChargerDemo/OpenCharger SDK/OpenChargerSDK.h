@@ -45,4 +45,6 @@ typedef void (^OCSuccessBlock)(id response, NSError *error);
 
 - (void)disconnectBLEPeripherals:(CBPeripheral*)activePeripheral;
 
+- (void)sendCodeToOpenCharger: (CBPeripheral *) thisPeripheral openChargerCode:(NSString *)openCharger chargeTime:(NSString *)chargeTime;
+
 @end

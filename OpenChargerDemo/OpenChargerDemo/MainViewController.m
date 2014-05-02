@@ -7,8 +7,13 @@
 //
 
 #import "MainViewController.h"
+#import "OpenCharger SDK/OCDefines.h"
 
-@interface MainViewController ()
+@interface MainViewController (){
+    NSString    *myUUID;
+    NSString    *myOpenChargerCode;
+    NSString    *myChargeTime;
+}
 
 @end
 
@@ -29,12 +34,19 @@
     // Do any additional setup after loading the view.
     self.OC = [[OpenChargerSDK alloc] init];
     [self.OC controlSetup];
+    
+    self.uuid1.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    NSUInteger newLength = [textField.text length] + [string length] - range.length;
+    return (newLength > 5) ? NO : YES;
 }
 
 /*
@@ -47,6 +59,8 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (IBAction)sliderValueChenged:(id)sender {
+}
 
 - (IBAction)connectButtonPressed:(id)sender {
     double timeout = 3;
@@ -54,9 +68,33 @@
     [self.OC findBLEPeripherals:timeout];
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(timeout * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        NSLog(@"/.......ble......./");
-        NSLog(@"/%@", self.OC.peripherals);
-        
+        //NSLog(@"/%lu", (unsigned long)[self.OC.peripherals count]);
+        NSString *thisUUID = @"B4560D2B-EFBA-D6CC-9E96-FFDB6572A859";
+        for (int i=0; i< (unsigned long)[self.OC.peripherals count]; i++) {
+            CBPeripheral *seletedPeripheral = [self.OC.peripherals objectAtIndex:i];
+            NSString *identifierString = [NSString stringWithFormat:@"%@", seletedPeripheral.identifier];
+            NSArray *uuidArray = [identifierString componentsSeparatedByString:@" "];
+            NSString *seletedUUID = [uuidArray objectAtIndex:2];
+            if ([thisUUID isEqualToString:seletedUUID]) {
+                NSLog(@"%@",seletedPeripheral);
+                [self.OC connectPeripheral:seletedPeripheral];
+                [self.OC didDiscoverCharacteristicsBlock:^(id response, NSError *error) {
+                    double delayInSeconds = 3.0;
+                    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+                    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                        [self.OC  notification:[CBUUID UUIDWithString:BS_SERIAL_SERVICE_UUID]
+                                characteristicUUID:[CBUUID UUIDWithString:BS_SERIAL_RX_UUID]
+                                                 p:seletedPeripheral
+                                                on:YES];
+                        [self.OC  didUpdateValueBlock:^(NSData *data, NSError *error) {
+                            //NSString *recv = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                        }];
+                        //turn OC on
+                        [self.OC sendCodeToOpenCharger:seletedPeripheral openChargerCode:@"123456789012" chargeTime:@"0002"];
+                    });
+                }];
+            }
+        }
     });
 }
 @end

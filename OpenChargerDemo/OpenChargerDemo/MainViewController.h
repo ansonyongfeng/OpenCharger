@@ -11,7 +11,7 @@
 #import "OpenCharger SDK/OpenChargerSDK.h"
 #import "OpenCharger SDK/OCDefines.h"
 
-@interface MainViewController : UIViewController
+@interface MainViewController : UIViewController<UITextFieldDelegate>
 
 @property (nonatomic, strong) OpenChargerSDK *OC;
 

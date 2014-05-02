@@ -7,6 +7,7 @@
 //
 
 #import "OpenChargerSDK.h"
+#import "OCDefines.h"
 
 @interface OpenChargerSDK ()
 
@@ -157,7 +158,7 @@
 - (int) findBLEPeripherals:(int) timeout {
     if (self.cm.state != CBCentralManagerStatePoweredOn) {
         printf("CoreBluetooth not correctly initialized !\r\n");
-        printf("State = %ld (%s)\r\n",self.cm.state,[self centralManagerStateToString:self.cm.state]);
+        printf("State = %d (%s)\r\n",self.cm.state,[self centralManagerStateToString:self.cm.state]);
         return -1;
     }
     
@@ -450,7 +451,7 @@
 #pragma mark - CBCentralManagerDelegate
 
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central {
-    printf("Status of CoreBluetooth central manager changed %ld (%s)\r\n",central.state,[self centralManagerStateToString:central.state]);
+    printf("Status of CoreBluetooth central manager changed %d (%s)\r\n",central.state,[self centralManagerStateToString:central.state]);
     if (central.state == CBCentralManagerStatePoweredOn) {
         if (_powerOnBlock) {
             _powerOnBlock(nil, nil);
@@ -545,6 +546,16 @@
 
 - (void)disconnectBLEPeripherals:(CBPeripheral *)activePeripheral{
     [self.cm cancelPeripheralConnection:activePeripheral];
+}
+
+- (void)sendCodeToOpenCharger: (CBPeripheral *) thisPeripheral openChargerCode:(NSString *)openCharger chargeTime:(NSString*)chargeTime {
+    /*** Chargetime is between 0001 and 9999 mins ***/
+    NSString *openChargerCode = [NSString stringWithFormat:@"%@%@", openCharger, chargeTime];
+    NSData *data = [openChargerCode dataUsingEncoding:NSUTF8StringEncoding];
+    [self writeValue:[CBUUID UUIDWithString:BS_SERIAL_SERVICE_UUID]
+     characteristicUUID:[CBUUID UUIDWithString:BS_SERIAL_TX_UUID]
+                      p:thisPeripheral
+                   data:data];
 }
 
 
