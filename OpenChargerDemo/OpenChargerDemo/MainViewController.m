@@ -36,6 +36,10 @@
     [self.OC controlSetup];
     
     self.uuid1.delegate = self;
+    self.uuid2.delegate = self;
+    self.uuid3.delegate = self;
+    self.uuid4.delegate = self;
+    self.uuid5.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,8 +49,22 @@
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    NSLog(@"%d",textField.tag);
     NSUInteger newLength = [textField.text length] + [string length] - range.length;
-    return (newLength > 5) ? NO : YES;
+    if (textField.tag == 1) {
+        
+        return (newLength > 10) ? NO : YES;
+    }
+    else if (textField.tag == 2 || textField.tag == 3 || textField.tag == 4){
+        return (newLength > 4) ? NO : YES;
+    }
+    else if (textField.tag == 5){
+        return (newLength > 12) ? NO : YES;
+    }
+    else{
+        return YES;
+    }
+    
 }
 
 /*
