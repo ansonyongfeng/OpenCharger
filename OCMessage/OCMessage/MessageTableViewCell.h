@@ -1,5 +1,5 @@
 //
-//  AddMessageViewController.h
+//  MessageTableViewCell.h
 //  OCMessage
 //
 //  Created by YongfengHe on 19.05.14.
@@ -8,11 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddMessageViewController : UIViewController<UITextFieldDelegate>
+@interface MessageTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UITextField *messageTextField;
+
+@property (weak, nonatomic) NSString *thisID;
+
+@property (weak, nonatomic) IBOutlet UILabel *messageLabel;
 @property (weak, nonatomic) IBOutlet UILabel *entryLabel;
 @property (weak, nonatomic) IBOutlet UILabel *powerLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timingLabel;
+@property (weak, nonatomic) IBOutlet UISwitch *activeSwitch;
 
 @end
