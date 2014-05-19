@@ -76,5 +76,15 @@
 }
 
 - (IBAction)saveButtonPressed:(id)sender {
+    NSString *thisUUID = [NSString stringWithFormat:@"%@-%@-%@-%@-%@", self.uuid1, self.uuid2, self.uuid3, self.uuid4, self.uuid5];
+    [self initBeacon:thisUUID];
+}
+
+- (void)initBeacon:(NSString *)myUUID  {
+    NSUUID *uuid = [[NSUUID alloc] initWithUUIDString:myUUID];
+    self.beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:uuid
+                                                                //major:1
+                                                                //minor:1
+                                                           identifier:@"com.opencharger.myRegion"];
 }
 @end

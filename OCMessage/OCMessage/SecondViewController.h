@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
+#import <CoreBluetooth/CoreBluetooth.h>
 
 @interface SecondViewController : UIViewController<UITextFieldDelegate>
 
@@ -15,4 +17,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *uuid3;
 @property (weak, nonatomic) IBOutlet UITextField *uuid4;
 @property (weak, nonatomic) IBOutlet UITextField *uuid5;
+
+@property (strong, nonatomic) CLBeaconRegion *beaconRegion;
+@property (strong, nonatomic) NSDictionary *beaconPeripheralData;
+@property (strong, nonatomic) CBPeripheralManager *peripheralManager;
+
 @end
