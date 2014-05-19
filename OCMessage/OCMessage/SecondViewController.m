@@ -81,10 +81,14 @@
 }
 
 - (void)initBeacon:(NSString *)myUUID  {
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
     NSUUID *uuid = [[NSUUID alloc] initWithUUIDString:myUUID];
     self.beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:uuid
                                                                 //major:1
                                                                 //minor:1
                                                            identifier:@"com.opencharger.myRegion"];
+    // Tell location manager to start monitoring for the beacon region
+    [self.locationManager startMonitoringForRegion:self.beaconRegion];
 }
 @end
