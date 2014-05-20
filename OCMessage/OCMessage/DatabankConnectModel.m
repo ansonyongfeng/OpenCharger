@@ -66,6 +66,24 @@
     return items;
 }
 
+-(NSMutableArray *) getSettingItems:(NSString *)query {
+    NSMutableArray *items = [[NSMutableArray alloc] init];
+    const char *sql = [query UTF8String];
+    if (sqlite3_prepare_v2(database, sql, -1, &statement, nil) == SQLITE_OK) {
+        
+        while (sqlite3_step(statement) == SQLITE_ROW) {
+            NSString *OID = [NSString stringWithUTF8String:(char *)sqlite3_column_text(statement, 0)];
+            NSString *uuid = [NSString stringWithUTF8String:(char *)sqlite3_column_text(statement, 1)];
+            NSString *occode = [NSString stringWithUTF8String:(char *)sqlite3_column_text(statement, 2)];
+            
+            NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys: OID, @"id", uuid, @"uuid", occode, @"occode", nil];
+            [items addObject:dict];
+        }
+        sqlite3_finalize(statement);
+    }
+    return items;
+}
+
 -(NSMutableArray *) getFavItems:(NSString *)query {
     NSMutableArray *items = [[NSMutableArray alloc] init];
     const char *sql = [query UTF8String];

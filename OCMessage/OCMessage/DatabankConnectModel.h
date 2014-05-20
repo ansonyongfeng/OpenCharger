@@ -21,5 +21,6 @@
 
 
 -(NSMutableArray *) getItems:(NSString *)query;
+-(NSMutableArray *) getSettingItems:(NSString *)query;
 
 @end

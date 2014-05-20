@@ -7,8 +7,12 @@
 //
 
 #import "SecondViewController.h"
+#import "DatabankConnectModel.h"
 
-@interface SecondViewController ()
+@interface SecondViewController (){
+    DatabankConnectModel        *DBCM;
+    NSMutableArray              *objectsItemArray;
+}
 
 @end
 
@@ -19,10 +23,16 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     self.uuid1.delegate = self;
-    self.uuid2.delegate = self;
-    self.uuid3.delegate = self;
-    self.uuid4.delegate = self;
-    self.uuid5.delegate = self;
+    self.ocCode.delegate = self;
+    
+    //databank
+    DBCM = [[DatabankConnectModel alloc] init];
+    [DBCM openDb];
+    NSString *getItemsQuery = [NSString stringWithFormat:@"SELECT * FROM setting"];
+    objectsItemArray = [DBCM getSettingItems:getItemsQuery];
+    [DBCM closeDb];
+    self.uuid1.text = [[objectsItemArray objectAtIndex:0] objectForKey:@"uuid"];
+    self.ocCode.text = [[objectsItemArray objectAtIndex:0] objectForKey:@"occode"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,12 +45,9 @@
     NSUInteger newLength = [textField.text length] + [string length] - range.length;
     if (textField.tag == 1) {
         
-        return (newLength > 10) ? NO : YES;
+        return (newLength > 38) ? NO : YES;
     }
-    else if (textField.tag == 2 || textField.tag == 3 || textField.tag == 4){
-        return (newLength > 4) ? NO : YES;
-    }
-    else if (textField.tag == 5){
+    else if (textField.tag == 2){
         return (newLength > 12) ? NO : YES;
     }
     else{
@@ -50,33 +57,17 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if(textField == self.uuid1) {
-        [self.uuid2 becomeFirstResponder];
-    } else if(textField == self.uuid2) {
-        [self.uuid3 becomeFirstResponder];
-    }else if(textField == self.uuid3) {
-        [self.uuid4 becomeFirstResponder];
-    }else if(textField == self.uuid4) {
-        [UIView beginAnimations:nil context:NULL];
-        [UIView setAnimationDuration:0.35f];
-        CGRect frame = self.view.frame;
-        frame.origin.y = -100;
-        [self.view setFrame:frame];
-        [UIView commitAnimations];
-        [self.uuid5 becomeFirstResponder];
-    }else{
-        [UIView beginAnimations:nil context:NULL];
-        [UIView setAnimationDuration:0.35f];
-        CGRect frame = self.view.frame;
-        frame.origin.y = 0;
-        [self.view setFrame:frame];
-        [UIView commitAnimations];
+        [self.ocCode becomeFirstResponder];
+    } else if(textField == self.ocCode) {
         [textField resignFirstResponder];
+    }else{
+        
     }
     return NO;
 }
 
 - (IBAction)saveButtonPressed:(id)sender {
-    NSString *thisUUID = [NSString stringWithFormat:@"%@-%@-%@-%@-%@", self.uuid1, self.uuid2, self.uuid3, self.uuid4, self.uuid5];
+    NSString *thisUUID = self.uuid1.text;
     [self initBeacon:thisUUID];
 }
 

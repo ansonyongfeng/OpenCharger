@@ -13,10 +13,7 @@
 @interface SecondViewController : UIViewController<UITextFieldDelegate, CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *uuid1;
-@property (weak, nonatomic) IBOutlet UITextField *uuid2;
-@property (weak, nonatomic) IBOutlet UITextField *uuid3;
-@property (weak, nonatomic) IBOutlet UITextField *uuid4;
-@property (weak, nonatomic) IBOutlet UITextField *uuid5;
+@property (weak, nonatomic) IBOutlet UITextField *ocCode;
 
 @property (strong, nonatomic) CLBeaconRegion *beaconRegion;
 @property (strong, nonatomic) CLLocationManager *locationManager;

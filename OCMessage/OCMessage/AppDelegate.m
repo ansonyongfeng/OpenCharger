@@ -8,14 +8,56 @@
 
 #import "AppDelegate.h"
 
-@implementation AppDelegate
+@implementation AppDelegate{
+    CLLocationManager *locationManager;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // This location manager will be used to notify the user of region state transitions.
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    
     // Override point for customization after application launch.
     return YES;
 }
-							
+
+- (void)locationManager:(CLLocationManager *)manager didDetermineState:(CLRegionState)state forRegion:(CLRegion *)region
+{
+    // A user can transition in or out of a region while the application is not running.
+    // When this happens CoreLocation will launch the application momentarily, call this delegate method
+    // and we will let the user know via a local notification.
+    UILocalNotification *notification = [[UILocalNotification alloc] init];
+    
+    if(state == CLRegionStateInside)
+    {
+        [[UIDevice currentDevice] setBatteryMonitoringEnabled:YES];
+        float batteryLevel = [[UIDevice currentDevice] batteryLevel];
+        
+        //This will give you the battery between 0.0 (empty) and 1.0 (100% charged)
+        //If you want it as a percentage, you can do this:
+        
+        batteryLevel *= 100;
+        
+        //if (batteryLevel > 60) {
+        notification.alertBody = [NSString stringWithFormat:@"You're inside the OpenCharger and you battery level is %.0f\uFF05", batteryLevel]  ;
+        notification.soundName = UILocalNotificationDefaultSoundName;
+        //}
+    }
+    else if(state == CLRegionStateOutside)
+    {
+        //notification.alertBody = @"You're outside the OpenCharger";
+    }
+    else
+    {
+        return;
+    }
+    
+    // If the application is in the foreground, it will get a callback to application:didReceiveLocalNotification:.
+    // If its not, iOS will display the notification to the user.
+    [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
