@@ -7,9 +7,12 @@
 //
 
 #import "AppDelegate.h"
+#import "DatabankConnectModel.h"
 
 @implementation AppDelegate{
     CLLocationManager *locationManager;
+    DatabankConnectModel        *DBCM;
+    NSMutableArray              *objectsItemArray;
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -24,6 +27,16 @@
 
 - (void)locationManager:(CLLocationManager *)manager didDetermineState:(CLRegionState)state forRegion:(CLRegion *)region
 {
+    NSMutableString *alertMessage = [[NSMutableString alloc] init];
+    //databank
+    DBCM = [[DatabankConnectModel alloc] init];
+    [DBCM openDb];
+    NSString *getItemsQuery = [NSString stringWithFormat:@"SELECT * FROM messages WHERE active = 1"];
+    objectsItemArray = [DBCM getItems:getItemsQuery];
+    [DBCM closeDb];
+    
+    
+    
     // A user can transition in or out of a region while the application is not running.
     // When this happens CoreLocation will launch the application momentarily, call this delegate method
     // and we will let the user know via a local notification.
@@ -31,6 +44,12 @@
     
     if(state == CLRegionStateInside)
     {
+        for (NSDictionary* key in objectsItemArray) {
+            if ([[key objectForKey:@"entry"] isEqualToString:@"1"]) {
+                alertMessage = [key objectForKey:@"message"];
+            }
+        }
+        
         [[UIDevice currentDevice] setBatteryMonitoringEnabled:YES];
         float batteryLevel = [[UIDevice currentDevice] batteryLevel];
         
@@ -40,13 +59,21 @@
         batteryLevel *= 100;
         
         //if (batteryLevel > 60) {
-        notification.alertBody = [NSString stringWithFormat:@"You're inside the OpenCharger and you battery level is %.0f\uFF05", batteryLevel]  ;
+        //notification.alertBody = [NSString stringWithFormat:@"You're inside the OpenCharger and you battery level is %.0f\uFF05", batteryLevel];
+        notification.alertBody = alertMessage;
         notification.soundName = UILocalNotificationDefaultSoundName;
         //}
     }
     else if(state == CLRegionStateOutside)
     {
+        for (NSDictionary* key in objectsItemArray) {
+            if ([[key objectForKey:@"entry"] isEqualToString:@"0"]) {
+                alertMessage = [key objectForKey:@"message"];
+            }
+        }
         //notification.alertBody = @"You're outside the OpenCharger";
+        notification.alertBody = alertMessage;
+        notification.soundName = UILocalNotificationDefaultSoundName;
     }
     else
     {

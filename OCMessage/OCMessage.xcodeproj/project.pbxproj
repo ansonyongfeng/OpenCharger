@@ -10,6 +10,7 @@
 		3E2A6BC3192BF0CB000616FA /* ThirdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E2A6BC2192BF0CB000616FA /* ThirdViewController.m */; };
 		3E2A6BC5192BF0F9000616FA /* powe@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E2A6BC4192BF0F9000616FA /* powe@2x.png */; };
 		3E2A6BC7192BF11B000616FA /* flash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E2A6BC6192BF11B000616FA /* flash@2x.png */; };
+		3E4740D5192D4FDD00FCB2FE /* calcuator.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E4740D4192D4FDD00FCB2FE /* calcuator.png */; };
 		3EA0A3B8192BFB320018CCC1 /* OpenChargerSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EA0A3B7192BFB320018CCC1 /* OpenChargerSDK.m */; };
 		C50136CE192A426300252EEB /* DatabankConnectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C50136CD192A426300252EEB /* DatabankConnectModel.m */; };
 		C50136D1192A42D600252EEB /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C50136D0192A42D600252EEB /* libsqlite3.dylib */; };
@@ -53,6 +54,7 @@
 		3E2A6BC2192BF0CB000616FA /* ThirdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdViewController.m; sourceTree = "<group>"; };
 		3E2A6BC4192BF0F9000616FA /* powe@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "powe@2x.png"; sourceTree = "<group>"; };
 		3E2A6BC6192BF11B000616FA /* flash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flash@2x.png"; sourceTree = "<group>"; };
+		3E4740D4192D4FDD00FCB2FE /* calcuator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calcuator.png; sourceTree = "<group>"; };
 		3EA0A3B5192BFB320018CCC1 /* OCDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDefines.h; sourceTree = "<group>"; };
 		3EA0A3B6192BFB320018CCC1 /* OpenChargerSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenChargerSDK.h; sourceTree = "<group>"; };
 		3EA0A3B7192BFB320018CCC1 /* OpenChargerSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenChargerSDK.m; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 		C57EE7D019264CEF00B2784A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3E4740D4192D4FDD00FCB2FE /* calcuator.png */,
 				3E2A6BC6192BF11B000616FA /* flash@2x.png */,
 				3E2A6BC4192BF0F9000616FA /* powe@2x.png */,
 				C57EE7D119264CEF00B2784A /* OCMessage-Info.plist */,
@@ -311,6 +314,7 @@
 				C55C78A1192A03A1009B3686 /* chat@2x.png in Resources */,
 				C57EE7E519264CEF00B2784A /* Images.xcassets in Resources */,
 				C57EE7D419264CEF00B2784A /* InfoPlist.strings in Resources */,
+				3E4740D5192D4FDD00FCB2FE /* calcuator.png in Resources */,
 				C57EE7DD19264CEF00B2784A /* Main.storyboard in Resources */,
 				C50136DE192A491B00252EEB /* ocmessage.sqlite3 in Resources */,
 				3E2A6BC7192BF11B000616FA /* flash@2x.png in Resources */,

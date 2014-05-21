@@ -77,7 +77,28 @@
         myChargeTime = [NSString stringWithFormat:@"%.0f", chargeTime];
     }
 }
+- (IBAction)calcuatorButtonPressed:(id)sender {
+    [[UIDevice currentDevice] setBatteryMonitoringEnabled:YES];
+    float batteryLevel = [[UIDevice currentDevice] batteryLevel];
+    batteryLevel *= 100;
+    self.chargeTimeLabel.text = [NSString stringWithFormat:@"%.0f\uFF05", batteryLevel];
+    float chargeTime = 1.80*(100-batteryLevel);
+    self.chargeTimeLabel.text = [NSString stringWithFormat:@"%.0f mins", chargeTime];
+    if (chargeTime < 10) {
+        myChargeTime = [NSString stringWithFormat:@"000%.0f", chargeTime];
+    }
+    else if (chargeTime < 100){
+        myChargeTime = [NSString stringWithFormat:@"00%.0f", chargeTime];
+    }
+    else if (chargeTime < 1000){
+        myChargeTime = [NSString stringWithFormat:@"0%.0f", chargeTime];
+    }else{
+        myChargeTime = [NSString stringWithFormat:@"%.0f", chargeTime];
+    }
+    self.minsSlider.value = ceil(chargeTime);
+}
 - (IBAction)chargeButtonPressed:(id)sender {
+    [self.activityIndicator startAnimating];
     double timeout = 3;
     [self.OC findBLEPeripherals:timeout];
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(timeout * NSEC_PER_SEC));
@@ -103,10 +124,12 @@
                         }];
                         //turn OC on
                         [self.OC sendCodeToOpenCharger:seletedPeripheral openChargerCode:myOpenChargerCode chargeTime:myChargeTime];
+                        [self.activityIndicator stopAnimating];
                         //NSLog(@"%@%@",myOpenChargerCode, myChargeTime);
                     });
                 }];
             }else{
+                [self.activityIndicator stopAnimating];
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Information"
                                                                 message:@"UUID is not correct!"
                                                                delegate:self

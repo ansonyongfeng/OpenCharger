@@ -147,5 +147,17 @@
     }
 }
 
+-(void) updateItem: (NSString *) query {
+    const char *sql = [query UTF8String];
+    if (sqlite3_prepare_v2(database, sql, -1, &statement, nil) == SQLITE_OK) {
+        if (sqlite3_step(statement)) {
+            NSLog(@"updateItem true");
+        }
+        sqlite3_finalize(statement);
+    }
+    else{
+        NSLog(@"updateItem false");
+    }
+}
 
 @end

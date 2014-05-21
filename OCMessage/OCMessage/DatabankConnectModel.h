@@ -18,6 +18,7 @@
 -(void) insertItems:(NSString *)query;
 -(void) emptyTable:(NSString *)tableName;
 -(void) deleteItems:(NSString *)query;
+-(void) updateItem:(NSString *)query;
 
 
 -(NSMutableArray *) getItems:(NSString *)query;

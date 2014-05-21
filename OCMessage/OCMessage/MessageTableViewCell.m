@@ -7,8 +7,11 @@
 //
 
 #import "MessageTableViewCell.h"
+#import "DatabankConnectModel.h"
 
-@implementation MessageTableViewCell
+@implementation MessageTableViewCell{
+    DatabankConnectModel        *DBCM;
+}
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -33,11 +36,16 @@
 
 - (IBAction)activeSwitchChanged:(id)sender {
     UISwitch *thisSwitch = (UISwitch *)sender;
+    DBCM = [[DatabankConnectModel alloc] init];
+    [DBCM openDb];
     if (thisSwitch.on) {
-        NSLog(@"%@", self.thisID);
+        NSString *getItemsQuery = [NSString stringWithFormat:@"UPDATE messages SET  active = '1' WHERE id = '%@'", self.thisID];
+        [DBCM updateItem:getItemsQuery];
         
     }else{
-        NSLog(@"%@", self.thisID);
+        NSString *getItemsQuery = [NSString stringWithFormat:@"UPDATE messages SET  active = '0' WHERE id = '%@'", self.thisID];
+        [DBCM updateItem:getItemsQuery];
     }
+    [DBCM closeDb];
 }
 @end

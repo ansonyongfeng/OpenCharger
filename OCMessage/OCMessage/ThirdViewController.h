@@ -14,5 +14,8 @@
 
 @property (nonatomic, strong) OpenChargerSDK *OC;
 
+@property (weak, nonatomic) IBOutlet UISlider *minsSlider;
+
 @property (weak, nonatomic) IBOutlet UILabel *chargeTimeLabel;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @end

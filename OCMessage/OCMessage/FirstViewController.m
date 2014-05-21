@@ -34,6 +34,7 @@
     objectsItemArray = [DBCM getItems:getItemsQuery];
     [DBCM closeDb];
     [self.tableView reloadData];
+    //NSLog(@"%@", objectsItemArray);
 }
 
 - (void)viewDidLoad

@@ -313,12 +313,28 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <action selector="chargeButtonPressed:" destination="KYO-ZN-dpd" eventType="touchUpInside" id="LT4-Rl-Le2"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="grB-IH-9Cb">
+                                <rect key="frame" x="20" y="314" width="64" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="calcuator.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="calcuatorButtonPressed:" destination="KYO-ZN-dpd" eventType="touchUpInside" id="99o-al-U1F"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="9oa-Wd-zoS">
+                                <rect key="frame" x="217" y="236" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Charge" image="flash.png" id="7Cq-aG-Lcj"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="9oa-Wd-zoS" id="Whf-Qo-0eV"/>
                         <outlet property="chargeTimeLabel" destination="XKN-so-bqi" id="x4L-5w-icN"/>
+                        <outlet property="minsSlider" destination="gV4-N7-1eD" id="n8Z-Di-Yx9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X4d-FS-fLu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -366,6 +382,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         </scene>
     </scenes>
     <resources>
+        <image name="calcuator.png" width="128" height="128"/>
         <image name="chat.png" width="32" height="32"/>
         <image name="flash.png" width="30" height="30"/>
         <image name="powe.png" width="64" height="64"/>
