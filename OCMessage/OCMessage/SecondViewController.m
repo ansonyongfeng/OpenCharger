@@ -80,6 +80,9 @@
                                                                 //minor:1
                                                            identifier:@"com.opencharger.myRegion"];
     // Tell location manager to start monitoring for the beacon region
+    
+    self.beaconRegion.notifyEntryStateOnDisplay = NO;
     [self.locationManager startMonitoringForRegion:self.beaconRegion];
+    [self.locationManager startRangingBeaconsInRegion:self.beaconRegion];
 }
 @end
