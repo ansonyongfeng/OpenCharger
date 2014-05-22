@@ -48,24 +48,31 @@
     {
         for (NSDictionary* key in objectsItemArray) {
             float thisPowerLevel = [[key objectForKey:@"power"] floatValue];
+            NSString *thisAllDay = [key objectForKey:@"allday"];
             if ([[key objectForKey:@"entry"] isEqualToString:@"1"] && batteryLevel < thisPowerLevel) {
-                alertMessage = [key objectForKey:@"message"];
+                
+                if ([thisAllDay isEqualToString:@"1"]) {
+                    alertMessage = [key objectForKey:@"message"];
+                    notification.alertBody = alertMessage;
+                    notification.soundName = UILocalNotificationDefaultSoundName;
+                }
+                
             }
         }
-        notification.alertBody = alertMessage;
-        notification.soundName = UILocalNotificationDefaultSoundName;
-
     }
     else if(state == CLRegionStateOutside)
     {
         for (NSDictionary* key in objectsItemArray) {
             float thisPowerLevel = [[key objectForKey:@"power"] floatValue];
+            NSString *thisAllDay = [key objectForKey:@"allday"];
             if ([[key objectForKey:@"entry"] isEqualToString:@"0"] && batteryLevel < thisPowerLevel) {
-                alertMessage = [key objectForKey:@"message"];
+                if ([thisAllDay isEqualToString:@"1"]) {
+                    alertMessage = [key objectForKey:@"message"];
+                    notification.alertBody = alertMessage;
+                    notification.soundName = UILocalNotificationDefaultSoundName;
+                }
             }
         }
-        notification.alertBody = alertMessage;
-        notification.soundName = UILocalNotificationDefaultSoundName;
     }
     else
     {
