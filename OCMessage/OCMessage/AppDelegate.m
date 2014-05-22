@@ -35,7 +35,9 @@
     objectsItemArray = [DBCM getItems:getItemsQuery];
     [DBCM closeDb];
     
-    
+    [[UIDevice currentDevice] setBatteryMonitoringEnabled:YES];
+    float batteryLevel = [[UIDevice currentDevice] batteryLevel];
+    batteryLevel *= 100;
     
     // A user can transition in or out of a region while the application is not running.
     // When this happens CoreLocation will launch the application momentarily, call this delegate method
@@ -45,33 +47,23 @@
     if(state == CLRegionStateInside)
     {
         for (NSDictionary* key in objectsItemArray) {
-            if ([[key objectForKey:@"entry"] isEqualToString:@"1"]) {
+            float thisPowerLevel = [[key objectForKey:@"power"] floatValue];
+            if ([[key objectForKey:@"entry"] isEqualToString:@"1"] && batteryLevel < thisPowerLevel) {
                 alertMessage = [key objectForKey:@"message"];
             }
         }
-        
-        [[UIDevice currentDevice] setBatteryMonitoringEnabled:YES];
-        float batteryLevel = [[UIDevice currentDevice] batteryLevel];
-        
-        //This will give you the battery between 0.0 (empty) and 1.0 (100% charged)
-        //If you want it as a percentage, you can do this:
-        
-        batteryLevel *= 100;
-        
-        //if (batteryLevel > 60) {
-        //notification.alertBody = [NSString stringWithFormat:@"You're inside the OpenCharger and you battery level is %.0f\uFF05", batteryLevel];
         notification.alertBody = alertMessage;
         notification.soundName = UILocalNotificationDefaultSoundName;
-        //}
+
     }
     else if(state == CLRegionStateOutside)
     {
         for (NSDictionary* key in objectsItemArray) {
-            if ([[key objectForKey:@"entry"] isEqualToString:@"0"]) {
+            float thisPowerLevel = [[key objectForKey:@"power"] floatValue];
+            if ([[key objectForKey:@"entry"] isEqualToString:@"0"] && batteryLevel < thisPowerLevel) {
                 alertMessage = [key objectForKey:@"message"];
             }
         }
-        //notification.alertBody = @"You're outside the OpenCharger";
         notification.alertBody = alertMessage;
         notification.soundName = UILocalNotificationDefaultSoundName;
     }
