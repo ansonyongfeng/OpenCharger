@@ -42,16 +42,44 @@
     self.messageTextField.delegate = self;
     
     //default data
-    message     = @"";
-    entry       = @"1";
-    power       = @"30";
-    allDay      = @"1";
-    NSDate *currentTime = [NSDate date];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"HH:mm"];
-    timing      = [dateFormatter stringFromDate: currentTime];
-    self.timingLabel.text = timing;
+    if (self.inputData) {
+        NSLog(@"%@", self.inputData);
+        message = [self.inputData objectForKey:@"message"];
+        self.messageTextField.text = message;
+        entry = [self.inputData objectForKey:@"entry"];
+        if ([entry isEqualToString:@"1"]) {
+            [self.entrySwitch setOn:YES];
+        }else{
+            [self.entrySwitch setOn:NO];
+        }
+        allDay = [self.inputData objectForKey:@"allday"];
+        if ([allDay isEqualToString:@"1"]) {
+            [self.allDaySwitch setOn:YES];
+            self.timingLabel.textColor = [UIColor lightGrayColor];
+        }else{
+            [self.allDaySwitch setOn:NO];
+            self.timingLabel.textColor = [UIColor darkGrayColor];
+        }
+        power = [self.inputData objectForKey:@"power"];
+        self.powerSlider.value = [power floatValue];
+        self.powerLabel.text = [NSString stringWithFormat:@"%@\uFF05", power];
+        timing = [self.inputData objectForKey:@"timing"];
+        self.timingLabel.text = timing;
+    }else{
+        message     = @"";
+        entry       = @"1";
+        power       = @"30";
+        allDay      = @"1";
+        NSDate *currentTime = [NSDate date];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"HH:mm"];
+        timing      = [dateFormatter stringFromDate: currentTime];
+        self.timingLabel.text = timing;
+    }
+    
     //NSLog(@"%@, %@, %@, %@, %@, ", message, entry, power, allDay, timing);
+    
+    
 }
 
 - (void)didReceiveMemoryWarning

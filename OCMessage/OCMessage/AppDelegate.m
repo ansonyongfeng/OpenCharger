@@ -46,6 +46,9 @@
     
     if(state == CLRegionStateInside)
     {
+        /*alertMessage = [NSMutableString stringWithFormat:@"ni hao"];
+        notification.alertBody = alertMessage;
+        notification.soundName = UILocalNotificationDefaultSoundName;*/
         for (NSDictionary* key in objectsItemArray) {
             float thisPowerLevel = [[key objectForKey:@"power"] floatValue];
             NSString *thisAllDay = [key objectForKey:@"allday"];

@@ -15,4 +15,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *powerLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timingLabel;
 
+@property (weak, nonatomic) IBOutlet UISlider *powerSlider;
+
+@property (weak, nonatomic) NSDictionary *inputData;
+
+@property (weak, nonatomic) IBOutlet UISwitch *entrySwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *allDaySwitch;
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @end

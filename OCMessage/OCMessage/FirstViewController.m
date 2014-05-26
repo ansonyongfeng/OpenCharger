@@ -109,5 +109,45 @@
     return MTC;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    AMVC  = [self.storyboard instantiateViewControllerWithIdentifier:@"Add"];
+    
+    AMVC.inputData = [objectsItemArray objectAtIndex:indexPath.row];
+    
+    [self.navigationController pushViewController:AMVC animated:YES];
+}
+
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // Delete the row from the data source
+        if (editingStyle == UITableViewCellEditingStyleDelete) {
+            // Delete the row from the data source
+            DBCM = [[DatabankConnectModel alloc] init];
+            [DBCM openDb];
+            NSString *deleteItemsQuery = [NSString stringWithFormat:@"DELETE FROM messages WHERE id = %@", [[objectsItemArray objectAtIndex:indexPath.row] objectForKey:@"id"]];
+            [DBCM deleteItems:deleteItemsQuery];
+            [DBCM closeDb];
+            
+            [objectsItemArray removeObjectAtIndex:indexPath.row];
+            [self.tableView reloadData];
+            //[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            NSLog(@"%@", @"delete");
+        }
+        else if (editingStyle == UITableViewCellEditingStyleInsert) {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }
+    }
+    else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+    }
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return @"删除";
+}
+
 
 @end
