@@ -22,6 +22,7 @@
 		C55C78A4192A17D2009B3686 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C55C78A3192A17D2009B3686 /* CoreBluetooth.framework */; };
 		C55C78A6192A17DA009B3686 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C55C78A5192A17DA009B3686 /* CoreLocation.framework */; };
 		C55C78A9192A1C73009B3686 /* AddMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C55C78A8192A1C73009B3686 /* AddMessageViewController.m */; };
+		C57DF7CD1935FF830021D190 /* MessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C57DF7CC1935FF830021D190 /* MessageViewController.m */; };
 		C57EE7CA19264CEF00B2784A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57EE7C919264CEF00B2784A /* Foundation.framework */; };
 		C57EE7CC19264CEF00B2784A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57EE7CB19264CEF00B2784A /* CoreGraphics.framework */; };
 		C57EE7CE19264CEF00B2784A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57EE7CD19264CEF00B2784A /* UIKit.framework */; };
@@ -71,6 +72,8 @@
 		C55C78A5192A17DA009B3686 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C55C78A7192A1C73009B3686 /* AddMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddMessageViewController.h; sourceTree = "<group>"; };
 		C55C78A8192A1C73009B3686 /* AddMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddMessageViewController.m; sourceTree = "<group>"; };
+		C57DF7CB1935FF830021D190 /* MessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageViewController.h; sourceTree = "<group>"; };
+		C57DF7CC1935FF830021D190 /* MessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageViewController.m; sourceTree = "<group>"; };
 		C57EE7C619264CEF00B2784A /* OCMessage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OCMessage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C57EE7C919264CEF00B2784A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C57EE7CB19264CEF00B2784A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -179,6 +182,8 @@
 				C50136D3192A437300252EEB /* MessageTableViewCell.m */,
 				C57EE7E119264CEF00B2784A /* SecondViewController.h */,
 				C57EE7E219264CEF00B2784A /* SecondViewController.m */,
+				C57DF7CB1935FF830021D190 /* MessageViewController.h */,
+				C57DF7CC1935FF830021D190 /* MessageViewController.m */,
 				C55C78A7192A1C73009B3686 /* AddMessageViewController.h */,
 				C55C78A8192A1C73009B3686 /* AddMessageViewController.m */,
 				3E2A6BC1192BF0CB000616FA /* ThirdViewController.h */,
@@ -342,6 +347,7 @@
 				C50136D4192A437300252EEB /* MessageTableViewCell.m in Sources */,
 				C57EE7E319264CEF00B2784A /* SecondViewController.m in Sources */,
 				3EA0A3B8192BFB320018CCC1 /* OpenChargerSDK.m in Sources */,
+				C57DF7CD1935FF830021D190 /* MessageViewController.m in Sources */,
 				C57EE7DA19264CEF00B2784A /* AppDelegate.m in Sources */,
 				C57EE7E019264CEF00B2784A /* FirstViewController.m in Sources */,
 				C57EE7D619264CEF00B2784A /* main.m in Sources */,

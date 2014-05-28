@@ -10,9 +10,11 @@
 #import "AddMessageViewController.h"
 #import "DatabankConnectModel.h"
 #import "MessageTableViewCell.h"
+#import "MessageViewController.h"
 
 @interface FirstViewController (){
     AddMessageViewController    *AMVC;
+    MessageViewController       *MVC;
     DatabankConnectModel        *DBCM;
     MessageTableViewCell        *MTC;
     NSMutableArray              *objectsItemArray;
@@ -111,11 +113,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    AMVC  = [self.storyboard instantiateViewControllerWithIdentifier:@"Add"];
+    /*AMVC  = [self.storyboard instantiateViewControllerWithIdentifier:@"Add"];
     
     AMVC.inputData = [objectsItemArray objectAtIndex:indexPath.row];
     
-    [self.navigationController pushViewController:AMVC animated:YES];
+    [self.navigationController pushViewController:AMVC animated:YES];*/
+    MVC  = [self.storyboard instantiateViewControllerWithIdentifier:@"Message"];
+     
+    //MVC.inputData = [objectsItemArray objectAtIndex:indexPath.row];
+     
+    [self.navigationController pushViewController:MVC animated:YES];
 }
 
 // Override to support editing the table view.

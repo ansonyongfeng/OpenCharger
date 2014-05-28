@@ -1,0 +1,573 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C57DF7DB19360BC70021D190 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57DF7DA19360BC70021D190 /* Foundation.framework */; };
+		C57DF7DD19360BC70021D190 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57DF7DC19360BC70021D190 /* CoreGraphics.framework */; };
+		C57DF7DF19360BC70021D190 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57DF7DE19360BC70021D190 /* UIKit.framework */; };
+		C57DF7E519360BC70021D190 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C57DF7E319360BC70021D190 /* InfoPlist.strings */; };
+		C57DF7E719360BC70021D190 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C57DF7E619360BC70021D190 /* main.m */; };
+		C57DF7EB19360BC70021D190 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C57DF7EA19360BC70021D190 /* AppDelegate.m */; };
+		C57DF7EE19360BC70021D190 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C57DF7EC19360BC70021D190 /* Main.storyboard */; };
+		C57DF7F619360BC80021D190 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C57DF7F519360BC80021D190 /* Images.xcassets */; };
+		C57DF7FD19360BC80021D190 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57DF7FC19360BC80021D190 /* XCTest.framework */; };
+		C57DF7FE19360BC80021D190 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57DF7DA19360BC70021D190 /* Foundation.framework */; };
+		C57DF7FF19360BC80021D190 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57DF7DE19360BC70021D190 /* UIKit.framework */; };
+		C57DF80719360BC80021D190 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C57DF80519360BC80021D190 /* InfoPlist.strings */; };
+		C57DF80919360BC80021D190 /* OpenChargerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C57DF80819360BC80021D190 /* OpenChargerTests.m */; };
+		C57DF81519360C430021D190 /* MessagesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C57DF81419360C430021D190 /* MessagesTableViewController.m */; };
+		C57DF81819360C590021D190 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C57DF81719360C590021D190 /* SettingsTableViewController.m */; };
+		C57DF81B19360C750021D190 /* ChargerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C57DF81A19360C750021D190 /* ChargerTableViewController.m */; };
+		C57DF81F19360DE20021D190 /* chat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C57DF81C19360DE20021D190 /* chat@2x.png */; };
+		C57DF82019360DE20021D190 /* flash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C57DF81D19360DE20021D190 /* flash@2x.png */; };
+		C57DF82119360DE20021D190 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C57DF81E19360DE20021D190 /* settings@2x.png */; };
+		C57DF82319360E060021D190 /* opencharger.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = C57DF82219360E060021D190 /* opencharger.sqlite3 */; };
+		C57DF825193613E70021D190 /* power@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C57DF824193613E70021D190 /* power@2x.png */; };
+		C57DF8291936140B0021D190 /* calcuator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C57DF8281936140B0021D190 /* calcuator@2x.png */; };
+		C57DF83019362AFB0021D190 /* DatabankConnectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C57DF82F19362AFB0021D190 /* DatabankConnectModel.m */; };
+		C57DF83519362B0E0021D190 /* OpenChargerSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = C57DF83419362B0E0021D190 /* OpenChargerSDK.m */; };
+		C57DF83719362B310021D190 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57DF83619362B310021D190 /* CoreBluetooth.framework */; };
+		C57DF83919362B370021D190 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57DF83819362B370021D190 /* CoreLocation.framework */; };
+		C57DF83B19362B620021D190 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C57DF83A19362B620021D190 /* libsqlite3.0.dylib */; };
+		C57DF83F19362BC70021D190 /* MessagesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C57DF83E19362BC70021D190 /* MessagesTableViewCell.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C57DF80019360BC80021D190 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C57DF7CF19360BC70021D190 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C57DF7D619360BC70021D190;
+			remoteInfo = OpenCharger;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C57DF7D719360BC70021D190 /* OpenCharger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenCharger.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C57DF7DA19360BC70021D190 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C57DF7DC19360BC70021D190 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C57DF7DE19360BC70021D190 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C57DF7E219360BC70021D190 /* OpenCharger-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OpenCharger-Info.plist"; sourceTree = "<group>"; };
+		C57DF7E419360BC70021D190 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C57DF7E619360BC70021D190 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C57DF7E819360BC70021D190 /* OpenCharger-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OpenCharger-Prefix.pch"; sourceTree = "<group>"; };
+		C57DF7E919360BC70021D190 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C57DF7EA19360BC70021D190 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C57DF7ED19360BC70021D190 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C57DF7F519360BC80021D190 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		C57DF7FB19360BC80021D190 /* OpenChargerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenChargerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C57DF7FC19360BC80021D190 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		C57DF80419360BC80021D190 /* OpenChargerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OpenChargerTests-Info.plist"; sourceTree = "<group>"; };
+		C57DF80619360BC80021D190 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C57DF80819360BC80021D190 /* OpenChargerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenChargerTests.m; sourceTree = "<group>"; };
+		C57DF81319360C430021D190 /* MessagesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagesTableViewController.h; sourceTree = "<group>"; };
+		C57DF81419360C430021D190 /* MessagesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagesTableViewController.m; sourceTree = "<group>"; };
+		C57DF81619360C590021D190 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
+		C57DF81719360C590021D190 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
+		C57DF81919360C750021D190 /* ChargerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChargerTableViewController.h; sourceTree = "<group>"; };
+		C57DF81A19360C750021D190 /* ChargerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChargerTableViewController.m; sourceTree = "<group>"; };
+		C57DF81C19360DE20021D190 /* chat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat@2x.png"; sourceTree = "<group>"; };
+		C57DF81D19360DE20021D190 /* flash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flash@2x.png"; sourceTree = "<group>"; };
+		C57DF81E19360DE20021D190 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
+		C57DF82219360E060021D190 /* opencharger.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = opencharger.sqlite3; sourceTree = "<group>"; };
+		C57DF824193613E70021D190 /* power@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "power@2x.png"; sourceTree = "<group>"; };
+		C57DF8281936140B0021D190 /* calcuator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calcuator@2x.png"; sourceTree = "<group>"; };
+		C57DF82E19362AFB0021D190 /* DatabankConnectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabankConnectModel.h; sourceTree = "<group>"; };
+		C57DF82F19362AFB0021D190 /* DatabankConnectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabankConnectModel.m; sourceTree = "<group>"; };
+		C57DF83219362B0E0021D190 /* OCDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDefines.h; sourceTree = "<group>"; };
+		C57DF83319362B0E0021D190 /* OpenChargerSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenChargerSDK.h; sourceTree = "<group>"; };
+		C57DF83419362B0E0021D190 /* OpenChargerSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenChargerSDK.m; sourceTree = "<group>"; };
+		C57DF83619362B310021D190 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		C57DF83819362B370021D190 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C57DF83A19362B620021D190 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		C57DF83D19362BC70021D190 /* MessagesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessagesTableViewCell.h; sourceTree = "<group>"; };
+		C57DF83E19362BC70021D190 /* MessagesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessagesTableViewCell.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C57DF7D419360BC70021D190 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C57DF83B19362B620021D190 /* libsqlite3.0.dylib in Frameworks */,
+				C57DF83919362B370021D190 /* CoreLocation.framework in Frameworks */,
+				C57DF83719362B310021D190 /* CoreBluetooth.framework in Frameworks */,
+				C57DF7DD19360BC70021D190 /* CoreGraphics.framework in Frameworks */,
+				C57DF7DF19360BC70021D190 /* UIKit.framework in Frameworks */,
+				C57DF7DB19360BC70021D190 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C57DF7F819360BC80021D190 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C57DF7FD19360BC80021D190 /* XCTest.framework in Frameworks */,
+				C57DF7FF19360BC80021D190 /* UIKit.framework in Frameworks */,
+				C57DF7FE19360BC80021D190 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C57DF7CE19360BC70021D190 = {
+			isa = PBXGroup;
+			children = (
+				C57DF7E019360BC70021D190 /* OpenCharger */,
+				C57DF80219360BC80021D190 /* OpenChargerTests */,
+				C57DF7D919360BC70021D190 /* Frameworks */,
+				C57DF7D819360BC70021D190 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C57DF7D819360BC70021D190 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C57DF7D719360BC70021D190 /* OpenCharger.app */,
+				C57DF7FB19360BC80021D190 /* OpenChargerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C57DF7D919360BC70021D190 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C57DF83A19362B620021D190 /* libsqlite3.0.dylib */,
+				C57DF83819362B370021D190 /* CoreLocation.framework */,
+				C57DF83619362B310021D190 /* CoreBluetooth.framework */,
+				C57DF7DA19360BC70021D190 /* Foundation.framework */,
+				C57DF7DC19360BC70021D190 /* CoreGraphics.framework */,
+				C57DF7DE19360BC70021D190 /* UIKit.framework */,
+				C57DF7FC19360BC80021D190 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C57DF7E019360BC70021D190 /* OpenCharger */ = {
+			isa = PBXGroup;
+			children = (
+				C57DF7E919360BC70021D190 /* AppDelegate.h */,
+				C57DF7EA19360BC70021D190 /* AppDelegate.m */,
+				C57DF7EC19360BC70021D190 /* Main.storyboard */,
+				C57DF82D19362AE80021D190 /* Models */,
+				C57DF83C19362BAD0021D190 /* Views */,
+				C57DF81219360C310021D190 /* Controllers */,
+				C57DF83119362B0E0021D190 /* OpenCharger SDK */,
+				C57DF7F519360BC80021D190 /* Images.xcassets */,
+				C57DF7E119360BC70021D190 /* Supporting Files */,
+			);
+			path = OpenCharger;
+			sourceTree = "<group>";
+		};
+		C57DF7E119360BC70021D190 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C57DF82219360E060021D190 /* opencharger.sqlite3 */,
+				C57DF81C19360DE20021D190 /* chat@2x.png */,
+				C57DF81D19360DE20021D190 /* flash@2x.png */,
+				C57DF824193613E70021D190 /* power@2x.png */,
+				C57DF8281936140B0021D190 /* calcuator@2x.png */,
+				C57DF81E19360DE20021D190 /* settings@2x.png */,
+				C57DF7E219360BC70021D190 /* OpenCharger-Info.plist */,
+				C57DF7E319360BC70021D190 /* InfoPlist.strings */,
+				C57DF7E619360BC70021D190 /* main.m */,
+				C57DF7E819360BC70021D190 /* OpenCharger-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C57DF80219360BC80021D190 /* OpenChargerTests */ = {
+			isa = PBXGroup;
+			children = (
+				C57DF80819360BC80021D190 /* OpenChargerTests.m */,
+				C57DF80319360BC80021D190 /* Supporting Files */,
+			);
+			path = OpenChargerTests;
+			sourceTree = "<group>";
+		};
+		C57DF80319360BC80021D190 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C57DF80419360BC80021D190 /* OpenChargerTests-Info.plist */,
+				C57DF80519360BC80021D190 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C57DF81219360C310021D190 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C57DF81319360C430021D190 /* MessagesTableViewController.h */,
+				C57DF81419360C430021D190 /* MessagesTableViewController.m */,
+				C57DF81919360C750021D190 /* ChargerTableViewController.h */,
+				C57DF81A19360C750021D190 /* ChargerTableViewController.m */,
+				C57DF81619360C590021D190 /* SettingsTableViewController.h */,
+				C57DF81719360C590021D190 /* SettingsTableViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		C57DF82D19362AE80021D190 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C57DF82E19362AFB0021D190 /* DatabankConnectModel.h */,
+				C57DF82F19362AFB0021D190 /* DatabankConnectModel.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C57DF83119362B0E0021D190 /* OpenCharger SDK */ = {
+			isa = PBXGroup;
+			children = (
+				C57DF83219362B0E0021D190 /* OCDefines.h */,
+				C57DF83319362B0E0021D190 /* OpenChargerSDK.h */,
+				C57DF83419362B0E0021D190 /* OpenChargerSDK.m */,
+			);
+			path = "OpenCharger SDK";
+			sourceTree = "<group>";
+		};
+		C57DF83C19362BAD0021D190 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C57DF83D19362BC70021D190 /* MessagesTableViewCell.h */,
+				C57DF83E19362BC70021D190 /* MessagesTableViewCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C57DF7D619360BC70021D190 /* OpenCharger */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C57DF80C19360BC80021D190 /* Build configuration list for PBXNativeTarget "OpenCharger" */;
+			buildPhases = (
+				C57DF7D319360BC70021D190 /* Sources */,
+				C57DF7D419360BC70021D190 /* Frameworks */,
+				C57DF7D519360BC70021D190 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OpenCharger;
+			productName = OpenCharger;
+			productReference = C57DF7D719360BC70021D190 /* OpenCharger.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C57DF7FA19360BC80021D190 /* OpenChargerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C57DF80F19360BC80021D190 /* Build configuration list for PBXNativeTarget "OpenChargerTests" */;
+			buildPhases = (
+				C57DF7F719360BC80021D190 /* Sources */,
+				C57DF7F819360BC80021D190 /* Frameworks */,
+				C57DF7F919360BC80021D190 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C57DF80119360BC80021D190 /* PBXTargetDependency */,
+			);
+			name = OpenChargerTests;
+			productName = OpenChargerTests;
+			productReference = C57DF7FB19360BC80021D190 /* OpenChargerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C57DF7CF19360BC70021D190 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Yongfeng He";
+				TargetAttributes = {
+					C57DF7FA19360BC80021D190 = {
+						TestTargetID = C57DF7D619360BC70021D190;
+					};
+				};
+			};
+			buildConfigurationList = C57DF7D219360BC70021D190 /* Build configuration list for PBXProject "OpenCharger" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C57DF7CE19360BC70021D190;
+			productRefGroup = C57DF7D819360BC70021D190 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C57DF7D619360BC70021D190 /* OpenCharger */,
+				C57DF7FA19360BC80021D190 /* OpenChargerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C57DF7D519360BC70021D190 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C57DF81F19360DE20021D190 /* chat@2x.png in Resources */,
+				C57DF82119360DE20021D190 /* settings@2x.png in Resources */,
+				C57DF7F619360BC80021D190 /* Images.xcassets in Resources */,
+				C57DF8291936140B0021D190 /* calcuator@2x.png in Resources */,
+				C57DF82019360DE20021D190 /* flash@2x.png in Resources */,
+				C57DF82319360E060021D190 /* opencharger.sqlite3 in Resources */,
+				C57DF7E519360BC70021D190 /* InfoPlist.strings in Resources */,
+				C57DF825193613E70021D190 /* power@2x.png in Resources */,
+				C57DF7EE19360BC70021D190 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C57DF7F919360BC80021D190 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C57DF80719360BC80021D190 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C57DF7D319360BC70021D190 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C57DF83519362B0E0021D190 /* OpenChargerSDK.m in Sources */,
+				C57DF83019362AFB0021D190 /* DatabankConnectModel.m in Sources */,
+				C57DF81819360C590021D190 /* SettingsTableViewController.m in Sources */,
+				C57DF81B19360C750021D190 /* ChargerTableViewController.m in Sources */,
+				C57DF81519360C430021D190 /* MessagesTableViewController.m in Sources */,
+				C57DF83F19362BC70021D190 /* MessagesTableViewCell.m in Sources */,
+				C57DF7EB19360BC70021D190 /* AppDelegate.m in Sources */,
+				C57DF7E719360BC70021D190 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C57DF7F719360BC80021D190 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C57DF80919360BC80021D190 /* OpenChargerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C57DF80119360BC80021D190 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C57DF7D619360BC70021D190 /* OpenCharger */;
+			targetProxy = C57DF80019360BC80021D190 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C57DF7E319360BC70021D190 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C57DF7E419360BC70021D190 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		C57DF7EC19360BC70021D190 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C57DF7ED19360BC70021D190 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C57DF80519360BC80021D190 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C57DF80619360BC80021D190 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C57DF80A19360BC80021D190 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C57DF80B19360BC80021D190 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C57DF80D19360BC80021D190 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OpenCharger/OpenCharger-Prefix.pch";
+				INFOPLIST_FILE = "OpenCharger/OpenCharger-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C57DF80E19360BC80021D190 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OpenCharger/OpenCharger-Prefix.pch";
+				INFOPLIST_FILE = "OpenCharger/OpenCharger-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		C57DF81019360BC80021D190 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/OpenCharger.app/OpenCharger";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OpenCharger/OpenCharger-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "OpenChargerTests/OpenChargerTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		C57DF81119360BC80021D190 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/OpenCharger.app/OpenCharger";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "OpenCharger/OpenCharger-Prefix.pch";
+				INFOPLIST_FILE = "OpenChargerTests/OpenChargerTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C57DF7D219360BC70021D190 /* Build configuration list for PBXProject "OpenCharger" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C57DF80A19360BC80021D190 /* Debug */,
+				C57DF80B19360BC80021D190 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C57DF80C19360BC80021D190 /* Build configuration list for PBXNativeTarget "OpenCharger" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C57DF80D19360BC80021D190 /* Debug */,
+				C57DF80E19360BC80021D190 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		C57DF80F19360BC80021D190 /* Build configuration list for PBXNativeTarget "OpenChargerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C57DF81019360BC80021D190 /* Debug */,
+				C57DF81119360BC80021D190 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C57DF7CF19360BC70021D190 /* Project object */;
+}
