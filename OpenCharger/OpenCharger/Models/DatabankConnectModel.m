@@ -19,11 +19,11 @@
     // Den Pfad zur Documents-Directory in path speichern
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
-    dbPath = [documentsDirectory stringByAppendingPathComponent:@"ocmessage.sqlite3"];
+    dbPath = [documentsDirectory stringByAppendingPathComponent:@"opencharger.sqlite3"];
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
     // Die Datenbank aus dem Bundle in die Documents-Directory kopieren
-    NSString *pathInMainBundle = [[NSBundle mainBundle] pathForResource:@"ocmessage" ofType:@"sqlite3"];
+    NSString *pathInMainBundle = [[NSBundle mainBundle] pathForResource:@"opencharger" ofType:@"sqlite3"];
     if (![fileManager fileExistsAtPath:dbPath]) {
         NSLog(@"Datenabnk noch nicht vorhanden");
         [fileManager copyItemAtPath:pathInMainBundle toPath:dbPath error:nil];

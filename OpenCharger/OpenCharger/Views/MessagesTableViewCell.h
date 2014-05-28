@@ -16,4 +16,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *powerLabel;
 @property (weak, nonatomic) IBOutlet UILabel *allDayLabel;
 
+@property (strong, nonatomic) NSString *thisID;
+
 @end
