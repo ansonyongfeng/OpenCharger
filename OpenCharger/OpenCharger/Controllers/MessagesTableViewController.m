@@ -9,10 +9,12 @@
 #import "MessagesTableViewController.h"
 #import "DatabankConnectModel.h"
 #import "MessagesTableViewCell.h"
+#import "AddAndEditTableViewController.h"
 
 @interface MessagesTableViewController (){
     DatabankConnectModel        *DBCM;
     MessagesTableViewCell       *MTC;
+    AddAndEditTableViewController       *AAETVC;
     NSMutableArray              *objectsItemArray;
 }
 
@@ -29,16 +31,7 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
+- (void)viewWillAppear:(BOOL)animated{
     //tableview
     self.tableView.dataSource   = self;
     self.tableView.delegate     = self;
@@ -50,6 +43,20 @@
     objectsItemArray = [DBCM getItems:getItemsQuery];
     [DBCM closeDb];
     [self.tableView reloadData];
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
+    
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+        
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Add" style:UIBarButtonItemStylePlain target:self action:@selector(addMessage)];
+    self.navigationItem.rightBarButtonItem = rightButton;
 }
 
 - (void)didReceiveMemoryWarning
@@ -93,12 +100,12 @@
     }
     
     NSString *power = [[objectsItemArray objectAtIndex:indexPath.row] objectForKey:@"power"];
-    MTC.powerLabel.text = [NSString stringWithFormat:@"Power under %@\uFF05", power];
+    MTC.powerLabel.text = [NSString stringWithFormat:@"Battery < %@\uFF05", power];
     
     NSString *allDay = [[objectsItemArray objectAtIndex:indexPath.row] objectForKey:@"allday"];
     NSString *timing = [[objectsItemArray objectAtIndex:indexPath.row] objectForKey:@"timing"];
     if ([allDay isEqualToString:@"1"]) {
-        MTC.allDayLabel.text = @"All day";
+        MTC.allDayLabel.text = @"All-day";
     }else{
         MTC.allDayLabel.text = timing;
     }
@@ -143,4 +150,17 @@
 -(NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{
     return @"Delete";
 }
+
+- (void)addMessage{
+    AAETVC  = [self.storyboard instantiateViewControllerWithIdentifier:@"AddAndEdit"];
+    [self.navigationController pushViewController:AAETVC animated:YES];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    AAETVC  = [self.storyboard instantiateViewControllerWithIdentifier:@"AddAndEdit"];
+    AAETVC.dataDictionary = [objectsItemArray objectAtIndex:indexPath.row];
+    [self.navigationController pushViewController:AAETVC animated:YES];
+}
+
 @end

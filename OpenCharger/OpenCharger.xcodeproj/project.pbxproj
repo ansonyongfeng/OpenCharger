@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E96DE1E193B409800B0D632 /* OpenChargerSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E96DE1D193B409800B0D632 /* OpenChargerSDK.m */; };
+		3E96DE25193B46B100B0D632 /* AddAndEditTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E96DE24193B46B100B0D632 /* AddAndEditTableViewController.m */; };
 		C57DF7DB19360BC70021D190 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57DF7DA19360BC70021D190 /* Foundation.framework */; };
 		C57DF7DD19360BC70021D190 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57DF7DC19360BC70021D190 /* CoreGraphics.framework */; };
 		C57DF7DF19360BC70021D190 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57DF7DE19360BC70021D190 /* UIKit.framework */; };
@@ -30,7 +32,6 @@
 		C57DF825193613E70021D190 /* power@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C57DF824193613E70021D190 /* power@2x.png */; };
 		C57DF8291936140B0021D190 /* calcuator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C57DF8281936140B0021D190 /* calcuator@2x.png */; };
 		C57DF83019362AFB0021D190 /* DatabankConnectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C57DF82F19362AFB0021D190 /* DatabankConnectModel.m */; };
-		C57DF83519362B0E0021D190 /* OpenChargerSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = C57DF83419362B0E0021D190 /* OpenChargerSDK.m */; };
 		C57DF83719362B310021D190 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57DF83619362B310021D190 /* CoreBluetooth.framework */; };
 		C57DF83919362B370021D190 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57DF83819362B370021D190 /* CoreLocation.framework */; };
 		C57DF83B19362B620021D190 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C57DF83A19362B620021D190 /* libsqlite3.0.dylib */; };
@@ -48,6 +49,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3E96DE1C193B409800B0D632 /* OpenChargerSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenChargerSDK.h; sourceTree = "<group>"; };
+		3E96DE1D193B409800B0D632 /* OpenChargerSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenChargerSDK.m; sourceTree = "<group>"; };
+		3E96DE1F193B40EB00B0D632 /* OpenChargerDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenChargerDefines.h; sourceTree = "<group>"; };
+		3E96DE23193B46B100B0D632 /* AddAndEditTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAndEditTableViewController.h; sourceTree = "<group>"; };
+		3E96DE24193B46B100B0D632 /* AddAndEditTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAndEditTableViewController.m; sourceTree = "<group>"; };
 		C57DF7D719360BC70021D190 /* OpenCharger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenCharger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C57DF7DA19360BC70021D190 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C57DF7DC19360BC70021D190 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -79,9 +85,6 @@
 		C57DF8281936140B0021D190 /* calcuator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calcuator@2x.png"; sourceTree = "<group>"; };
 		C57DF82E19362AFB0021D190 /* DatabankConnectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabankConnectModel.h; sourceTree = "<group>"; };
 		C57DF82F19362AFB0021D190 /* DatabankConnectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabankConnectModel.m; sourceTree = "<group>"; };
-		C57DF83219362B0E0021D190 /* OCDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCDefines.h; sourceTree = "<group>"; };
-		C57DF83319362B0E0021D190 /* OpenChargerSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenChargerSDK.h; sourceTree = "<group>"; };
-		C57DF83419362B0E0021D190 /* OpenChargerSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenChargerSDK.m; sourceTree = "<group>"; };
 		C57DF83619362B310021D190 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		C57DF83819362B370021D190 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C57DF83A19362B620021D190 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
@@ -116,6 +119,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E96DE1A193B409800B0D632 /* OpenChargerSDK */ = {
+			isa = PBXGroup;
+			children = (
+				3E96DE1C193B409800B0D632 /* OpenChargerSDK.h */,
+				3E96DE1D193B409800B0D632 /* OpenChargerSDK.m */,
+				3E96DE1F193B40EB00B0D632 /* OpenChargerDefines.h */,
+			);
+			path = OpenChargerSDK;
+			sourceTree = "<group>";
+		};
 		C57DF7CE19360BC70021D190 = {
 			isa = PBXGroup;
 			children = (
@@ -158,7 +171,7 @@
 				C57DF82D19362AE80021D190 /* Models */,
 				C57DF83C19362BAD0021D190 /* Views */,
 				C57DF81219360C310021D190 /* Controllers */,
-				C57DF83119362B0E0021D190 /* OpenCharger SDK */,
+				3E96DE1A193B409800B0D632 /* OpenChargerSDK */,
 				C57DF7F519360BC80021D190 /* Images.xcassets */,
 				C57DF7E119360BC70021D190 /* Supporting Files */,
 			);
@@ -209,6 +222,8 @@
 				C57DF81A19360C750021D190 /* ChargerTableViewController.m */,
 				C57DF81619360C590021D190 /* SettingsTableViewController.h */,
 				C57DF81719360C590021D190 /* SettingsTableViewController.m */,
+				3E96DE23193B46B100B0D632 /* AddAndEditTableViewController.h */,
+				3E96DE24193B46B100B0D632 /* AddAndEditTableViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -220,16 +235,6 @@
 				C57DF82F19362AFB0021D190 /* DatabankConnectModel.m */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		C57DF83119362B0E0021D190 /* OpenCharger SDK */ = {
-			isa = PBXGroup;
-			children = (
-				C57DF83219362B0E0021D190 /* OCDefines.h */,
-				C57DF83319362B0E0021D190 /* OpenChargerSDK.h */,
-				C57DF83419362B0E0021D190 /* OpenChargerSDK.m */,
-			);
-			path = "OpenCharger SDK";
 			sourceTree = "<group>";
 		};
 		C57DF83C19362BAD0021D190 /* Views */ = {
@@ -344,11 +349,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C57DF83519362B0E0021D190 /* OpenChargerSDK.m in Sources */,
 				C57DF83019362AFB0021D190 /* DatabankConnectModel.m in Sources */,
 				C57DF81819360C590021D190 /* SettingsTableViewController.m in Sources */,
 				C57DF81B19360C750021D190 /* ChargerTableViewController.m in Sources */,
+				3E96DE25193B46B100B0D632 /* AddAndEditTableViewController.m in Sources */,
 				C57DF81519360C430021D190 /* MessagesTableViewController.m in Sources */,
+				3E96DE1E193B409800B0D632 /* OpenChargerSDK.m in Sources */,
 				C57DF83F19362BC70021D190 /* MessagesTableViewCell.m in Sources */,
 				C57DF7EB19360BC70021D190 /* AppDelegate.m in Sources */,
 				C57DF7E719360BC70021D190 /* main.m in Sources */,
@@ -558,6 +564,7 @@
 				C57DF80E19360BC80021D190 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C57DF80F19360BC80021D190 /* Build configuration list for PBXNativeTarget "OpenChargerTests" */ = {
 			isa = XCConfigurationList;
@@ -566,6 +573,7 @@
 				C57DF81119360BC80021D190 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

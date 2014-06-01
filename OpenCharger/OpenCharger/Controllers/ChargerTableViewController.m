@@ -7,8 +7,11 @@
 //
 
 #import "ChargerTableViewController.h"
+#import "OpenChargerSDK.h"
 
-@interface ChargerTableViewController ()
+@interface ChargerTableViewController (){
+    NSString    *myChargeTime;
+}
 
 @end
 
@@ -23,6 +26,10 @@
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [self calculatePower];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -34,6 +41,7 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -41,81 +49,48 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)powerMinsSliderChanged:(id)sender {
+    UISlider *slider = (UISlider *)sender;
+    float chargeTime = slider.value;
+    self.powerLabel.text = [NSString stringWithFormat:@"%.0f mins", chargeTime];
+    if (chargeTime < 10) {
+        myChargeTime = [NSString stringWithFormat:@"000%.0f", chargeTime];
+    }
+    else if (chargeTime < 100){
+        myChargeTime = [NSString stringWithFormat:@"00%.0f", chargeTime];
+    }
+    else if (chargeTime < 1000){
+        myChargeTime = [NSString stringWithFormat:@"0%.0f", chargeTime];
+    }else{
+        myChargeTime = [NSString stringWithFormat:@"%.0f", chargeTime];
+    }
+}
+- (IBAction)calculateButtonPressed:(id)sender {
+    [self calculatePower];
 
-#pragma mark - Table view data source
-
-/*- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+}
+- (IBAction)turnOnButtonPressed:(id)sender {
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+- (void)calculatePower{
+    [[UIDevice currentDevice] setBatteryMonitoringEnabled:YES];
+    float batteryLevel = [[UIDevice currentDevice] batteryLevel];
+    batteryLevel *= 100;
+    self.powerLabel.text = [NSString stringWithFormat:@"%.0f\uFF05", batteryLevel];
+    float chargeTime = 1.80*(100-batteryLevel);
+    self.powerLabel.text = [NSString stringWithFormat:@"%.0f mins", chargeTime];
+    if (chargeTime < 10) {
+        myChargeTime = [NSString stringWithFormat:@"000%.0f", chargeTime];
+    }
+    else if (chargeTime < 100){
+        myChargeTime = [NSString stringWithFormat:@"00%.0f", chargeTime];
+    }
+    else if (chargeTime < 1000){
+        myChargeTime = [NSString stringWithFormat:@"0%.0f", chargeTime];
+    }else{
+        myChargeTime = [NSString stringWithFormat:@"%.0f", chargeTime];
+    }
+    self.powerSlider.value = ceil(chargeTime);
 }
-*/
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
-}
-*/
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

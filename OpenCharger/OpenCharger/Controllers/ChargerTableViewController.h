@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OpenChargerSDK.h"
+#import "OpenChargerDefines.h"
 
 @interface ChargerTableViewController : UITableViewController<UITableViewDataSource, UITableViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UILabel *powerLabel;
+@property (weak, nonatomic) IBOutlet UISlider *powerSlider;
+
+@property (nonatomic, strong) OpenChargerSDK *OC;
 @end

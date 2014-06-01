@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MessagesTableViewController : UITableViewController<UITableViewDataSource, UITableViewDelegate>
+@interface MessagesTableViewController : UITableViewController<UITableViewDataSource, UITableViewDelegate, UITableViewDelegate>
 
 
 @end

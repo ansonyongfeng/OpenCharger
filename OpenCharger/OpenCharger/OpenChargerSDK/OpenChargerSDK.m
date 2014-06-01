@@ -1,13 +1,13 @@
 //
 //  OpenChargerSDK.m
-//  OpenChargerDemo
+//  OpenCharger
 //
 //  Created by Yongfeng on 14-5-1.
 //  Copyright (c) 2014年 Yongfeng He. All rights reserved.
 //
 
 #import "OpenChargerSDK.h"
-#import "OCDefines.h"
+#import "OpenChargerDefines.h"
 
 @interface OpenChargerSDK ()
 

@@ -7,9 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
+#import <CoreBluetooth/CoreBluetooth.h>
 
-@interface SettingsTableViewController : UITableViewController<UITableViewDataSource, UITableViewDelegate>
+@interface SettingsTableViewController : UITableViewController<UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, CLLocationManagerDelegate>
 
+
+@property (weak, nonatomic) IBOutlet UITextField *uuidTextField;
+@property (weak, nonatomic) IBOutlet UITextField *ocCodeTextField;
+
+@property (strong, nonatomic) CLBeaconRegion *beaconRegion;
+@property (strong, nonatomic) CLLocationManager *locationManager;
 
 
 @end

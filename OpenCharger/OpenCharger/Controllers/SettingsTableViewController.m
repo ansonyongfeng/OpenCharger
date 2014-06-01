@@ -7,12 +7,16 @@
 //
 
 #import "SettingsTableViewController.h"
+#import "DatabankConnectModel.h"
 
 @interface SettingsTableViewController ()
 
 @end
 
-@implementation SettingsTableViewController
+@implementation SettingsTableViewController{
+    DatabankConnectModel        *DBCM;
+    NSMutableArray              *objectsItemArray;
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -24,20 +28,30 @@
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    //databank
+    DBCM = [[DatabankConnectModel alloc] init];
+    [DBCM openDb];
+    NSString *getItemsQuery = [NSString stringWithFormat:@"SELECT * FROM setting"];
+    objectsItemArray = [DBCM getSettingItems:getItemsQuery];
+    [DBCM closeDb];
+    self.uuidTextField.text = [[objectsItemArray objectAtIndex:0] objectForKey:@"uuid"];
+    self.ocCodeTextField.text = [[objectsItemArray objectAtIndex:0] objectForKey:@"occode"];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveSetting)];
     self.navigationItem.rightBarButtonItem = rightButton;
+    
+    self.uuidTextField.delegate = self;
+    self.ocCodeTextField.delegate = self;
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -47,83 +61,72 @@
 }
 
 - (void)saveSetting{
+    NSUUID *thisUUID= [[NSUUID alloc] initWithUUIDString:self.uuidTextField.text];
+    
+    if (thisUUID) {
+        //update db
+        DBCM = [[DatabankConnectModel alloc] init];
+        [DBCM openDb];
+        
+        NSString *updateItemQuery = [NSString stringWithFormat:@"UPDATE setting SET uuid = '%@', occode = '%@' WHERE id = 1", self.uuidTextField.text, self.ocCodeTextField.text];
+        [DBCM updateItem:updateItemQuery];
+        [DBCM closeDb];
+        //init iBeacon
+        [self initBeacon:thisUUID];
+        [self showMessage:@"Settings already configured"];
+    }else{
+        [self showMessage:@"Invalid UUID"];
+    }
     
 }
 
-#pragma mark - Table view data source
-
-/*- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if(textField == self.uuidTextField) {
+        [self.ocCodeTextField becomeFirstResponder];
+    }else{
+        [textField resignFirstResponder];
+    }
+    return NO;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    NSUInteger newLength = [textField.text length] + [string length] - range.length;
+    if (textField.tag == 1) {
+        
+        return (newLength > 36) ? NO : YES;
+    }
+    else if (textField.tag == 2 || textField.tag == 3 || textField.tag == 4){
+        return (newLength > 12) ? NO : YES;
+    }
+    else{
+        return YES;
+    }
 }
-*/
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+
+- (void)initBeacon:(NSUUID *)myUUID  {
+    NSLog(@"Beacon setted");
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    self.beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:myUUID
+                         //major:1
+                         //minor:1
+                                                           identifier:@"com.opencharger.myRegion"];
+    // Tell location manager to start monitoring for the beacon region
     
-    // Configure the cell...
+    self.beaconRegion.notifyEntryStateOnDisplay = NO;
+    [self.locationManager startMonitoringForRegion:self.beaconRegion];
+    [self.locationManager startRangingBeaconsInRegion:self.beaconRegion];
+}
+
+- (void)showMessage:(NSString *) myMessage{
+    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Hi"
+                                                      message:myMessage
+                                                     delegate:nil
+                                            cancelButtonTitle:@"OK"
+                                            otherButtonTitles:nil];
     
-    return cell;
+    [message show];
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
