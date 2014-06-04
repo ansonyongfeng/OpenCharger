@@ -16,4 +16,7 @@
 @property (weak, nonatomic) IBOutlet UISlider *powerSlider;
 
 @property (nonatomic, strong) OpenChargerSDK *OC;
+
+@property (nonatomic, strong) CBPeripheral  *thisPeripheral;
+
 @end

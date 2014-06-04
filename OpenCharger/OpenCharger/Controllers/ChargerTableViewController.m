@@ -7,7 +7,6 @@
 //
 
 #import "ChargerTableViewController.h"
-#import "OpenChargerSDK.h"
 #import "DatabankConnectModel.h"
 
 @interface ChargerTableViewController (){
@@ -57,9 +56,22 @@
     myOpenChargerCode = [[objectsItemArray objectAtIndex:0] objectForKey:@"occode"];
     NSLog(@"%@, %@", myUUID, myOpenChargerCode);
     
-    //turn on BLE
-    self.OC = [[OpenChargerSDK alloc] init];
-    [self.OC controlSetup];
+    //connect to OpenCharger
+    NSLog(@"%@",self.thisPeripheral);
+    [self.OC connectPeripheral:self.thisPeripheral];
+    [self.OC didDiscoverCharacteristicsBlock:^(id response, NSError *error) {
+        double delayInSeconds = 3.0;
+        dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [self.OC  notification:[CBUUID UUIDWithString:BS_SERIAL_SERVICE_UUID]
+                characteristicUUID:[CBUUID UUIDWithString:BS_SERIAL_RX_UUID]
+                                 p:self.thisPeripheral
+                                on:YES];
+            [self.OC  didUpdateValueBlock:^(NSData *data, NSError *error) {
+                //NSString *recv = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            }];
+        });
+    }];
     
 }
 
@@ -89,44 +101,8 @@
 
 }
 - (IBAction)turnOnButtonPressed:(id)sender {
-    double timeout = 3;
-    [self.OC findBLEPeripherals:timeout];
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(timeout * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        for (int i=0; i< (unsigned long)[self.OC.peripherals count]; i++) {
-            CBPeripheral *seletedPeripheral = [self.OC.peripherals objectAtIndex:i];
-            
-            //NSString *identifierString = [NSString stringWithFormat:@"%@", seletedPeripheral.identifier];
-            //NSArray *uuidArray = [identifierString componentsSeparatedByString:@" "];
-            //NSString *seletedUUID = [uuidArray objectAtIndex:2];
-        
-            NSString *regEx = [NSString stringWithFormat:@".*%@.*", @"OpenCharger"];
-            NSRange range = [seletedPeripheral.name rangeOfString:regEx options:NSRegularExpressionSearch];
-            
-            if (range.location != NSNotFound) {
-                NSLog(@"%@",seletedPeripheral);
-                [self.OC connectPeripheral:seletedPeripheral];
-                [self.OC didDiscoverCharacteristicsBlock:^(id response, NSError *error) {
-                    double delayInSeconds = 3.0;
-                    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-                    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-                        [self.OC  notification:[CBUUID UUIDWithString:BS_SERIAL_SERVICE_UUID]
-                            characteristicUUID:[CBUUID UUIDWithString:BS_SERIAL_RX_UUID]
-                                             p:seletedPeripheral
-                                            on:YES];
-                        [self.OC  didUpdateValueBlock:^(NSData *data, NSError *error) {
-                            //NSString *recv = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                        }];
-                        //turn OC on
-                        [self.OC sendCodeToOpenCharger:seletedPeripheral openChargerCode:myOpenChargerCode chargeTime:myChargeTime];
-                        //NSLog(@"%@%@",myOpenChargerCode, myChargeTime);
-                    });
-                }];
-            }else{
-                [self showMessage:@"Invalid UUID"];
-            }
-        }
-    });
+    NSLog(@"send OC code");
+    [self.OC sendCodeToOpenCharger:self.thisPeripheral openChargerCode:myOpenChargerCode chargeTime:myChargeTime];
 }
 
 - (void)calculatePower{

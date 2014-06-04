@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		3E96DE1E193B409800B0D632 /* OpenChargerSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E96DE1D193B409800B0D632 /* OpenChargerSDK.m */; };
 		3E96DE25193B46B100B0D632 /* AddAndEditTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E96DE24193B46B100B0D632 /* AddAndEditTableViewController.m */; };
+		3EC42BA9193FB3AC0029156B /* SearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC42BA8193FB3AC0029156B /* SearchTableViewController.m */; };
+		3EC42BAF193FB69C0029156B /* SearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC42BAE193FB69C0029156B /* SearchTableViewCell.m */; };
+		3EC42BB2193FB7740029156B /* ActivityIndicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC42BB1193FB7740029156B /* ActivityIndicatorViewController.m */; };
 		C57DF7DB19360BC70021D190 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57DF7DA19360BC70021D190 /* Foundation.framework */; };
 		C57DF7DD19360BC70021D190 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57DF7DC19360BC70021D190 /* CoreGraphics.framework */; };
 		C57DF7DF19360BC70021D190 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57DF7DE19360BC70021D190 /* UIKit.framework */; };
@@ -54,6 +57,12 @@
 		3E96DE1F193B40EB00B0D632 /* OpenChargerDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenChargerDefines.h; sourceTree = "<group>"; };
 		3E96DE23193B46B100B0D632 /* AddAndEditTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAndEditTableViewController.h; sourceTree = "<group>"; };
 		3E96DE24193B46B100B0D632 /* AddAndEditTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAndEditTableViewController.m; sourceTree = "<group>"; };
+		3EC42BA7193FB3AC0029156B /* SearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTableViewController.h; sourceTree = "<group>"; };
+		3EC42BA8193FB3AC0029156B /* SearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTableViewController.m; sourceTree = "<group>"; };
+		3EC42BAD193FB69C0029156B /* SearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTableViewCell.h; sourceTree = "<group>"; };
+		3EC42BAE193FB69C0029156B /* SearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTableViewCell.m; sourceTree = "<group>"; };
+		3EC42BB0193FB7740029156B /* ActivityIndicatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityIndicatorViewController.h; sourceTree = "<group>"; };
+		3EC42BB1193FB7740029156B /* ActivityIndicatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityIndicatorViewController.m; sourceTree = "<group>"; };
 		C57DF7D719360BC70021D190 /* OpenCharger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenCharger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C57DF7DA19360BC70021D190 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C57DF7DC19360BC70021D190 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -218,12 +227,16 @@
 			children = (
 				C57DF81319360C430021D190 /* MessagesTableViewController.h */,
 				C57DF81419360C430021D190 /* MessagesTableViewController.m */,
+				3EC42BA7193FB3AC0029156B /* SearchTableViewController.h */,
+				3EC42BA8193FB3AC0029156B /* SearchTableViewController.m */,
 				C57DF81919360C750021D190 /* ChargerTableViewController.h */,
 				C57DF81A19360C750021D190 /* ChargerTableViewController.m */,
 				C57DF81619360C590021D190 /* SettingsTableViewController.h */,
 				C57DF81719360C590021D190 /* SettingsTableViewController.m */,
 				3E96DE23193B46B100B0D632 /* AddAndEditTableViewController.h */,
 				3E96DE24193B46B100B0D632 /* AddAndEditTableViewController.m */,
+				3EC42BB0193FB7740029156B /* ActivityIndicatorViewController.h */,
+				3EC42BB1193FB7740029156B /* ActivityIndicatorViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -242,6 +255,8 @@
 			children = (
 				C57DF83D19362BC70021D190 /* MessagesTableViewCell.h */,
 				C57DF83E19362BC70021D190 /* MessagesTableViewCell.m */,
+				3EC42BAD193FB69C0029156B /* SearchTableViewCell.h */,
+				3EC42BAE193FB69C0029156B /* SearchTableViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -352,7 +367,10 @@
 				C57DF83019362AFB0021D190 /* DatabankConnectModel.m in Sources */,
 				C57DF81819360C590021D190 /* SettingsTableViewController.m in Sources */,
 				C57DF81B19360C750021D190 /* ChargerTableViewController.m in Sources */,
+				3EC42BB2193FB7740029156B /* ActivityIndicatorViewController.m in Sources */,
+				3EC42BA9193FB3AC0029156B /* SearchTableViewController.m in Sources */,
 				3E96DE25193B46B100B0D632 /* AddAndEditTableViewController.m in Sources */,
+				3EC42BAF193FB69C0029156B /* SearchTableViewCell.m in Sources */,
 				C57DF81519360C430021D190 /* MessagesTableViewController.m in Sources */,
 				3E96DE1E193B409800B0D632 /* OpenChargerSDK.m in Sources */,
 				C57DF83F19362BC70021D190 /* MessagesTableViewCell.m in Sources */,
