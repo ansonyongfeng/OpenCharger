@@ -7,13 +7,84 @@
 //
 
 #import "AppDelegate.h"
+#import "DatabankConnectModel.h"
 
-@implementation AppDelegate
+@implementation AppDelegate{
+    CLLocationManager *locationManager;
+    DatabankConnectModel        *DBCM;
+    NSMutableArray              *objectsItemArray;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // This location manager will be used to notify the user of region state transitions.
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    
     // Override point for customization after application launch.
     return YES;
+}
+
+- (void)locationManager:(CLLocationManager *)manager didDetermineState:(CLRegionState)state forRegion:(CLRegion *)region
+{
+    NSMutableString *alertMessage = [[NSMutableString alloc] init];
+    //databank
+    DBCM = [[DatabankConnectModel alloc] init];
+    [DBCM openDb];
+    NSString *getItemsQuery = [NSString stringWithFormat:@"SELECT * FROM messages WHERE active = 1"];
+    objectsItemArray = [DBCM getItems:getItemsQuery];
+    [DBCM closeDb];
+    
+    [[UIDevice currentDevice] setBatteryMonitoringEnabled:YES];
+    float batteryLevel = [[UIDevice currentDevice] batteryLevel];
+    batteryLevel *= 100;
+    
+    // A user can transition in or out of a region while the application is not running.
+    // When this happens CoreLocation will launch the application momentarily, call this delegate method
+    // and we will let the user know via a local notification.
+    UILocalNotification *notification = [[UILocalNotification alloc] init];
+    
+    if(state == CLRegionStateInside)
+    {
+        /*alertMessage = [NSMutableString stringWithFormat:@"ni hao"];
+         notification.alertBody = alertMessage;
+         notification.soundName = UILocalNotificationDefaultSoundName;*/
+        for (NSDictionary* key in objectsItemArray) {
+            float thisPowerLevel = [[key objectForKey:@"power"] floatValue];
+            NSString *thisAllDay = [key objectForKey:@"allday"];
+            if ([[key objectForKey:@"entry"] isEqualToString:@"1"] && batteryLevel < thisPowerLevel) {
+                
+                if ([thisAllDay isEqualToString:@"1"]) {
+                    alertMessage = [key objectForKey:@"message"];
+                    notification.alertBody = alertMessage;
+                    notification.soundName = UILocalNotificationDefaultSoundName;
+                }
+                
+            }
+        }
+    }
+    else if(state == CLRegionStateOutside)
+    {
+        for (NSDictionary* key in objectsItemArray) {
+            float thisPowerLevel = [[key objectForKey:@"power"] floatValue];
+            NSString *thisAllDay = [key objectForKey:@"allday"];
+            if ([[key objectForKey:@"entry"] isEqualToString:@"0"] && batteryLevel < thisPowerLevel) {
+                if ([thisAllDay isEqualToString:@"1"]) {
+                    alertMessage = [key objectForKey:@"message"];
+                    notification.alertBody = alertMessage;
+                    notification.soundName = UILocalNotificationDefaultSoundName;
+                }
+            }
+        }
+    }
+    else
+    {
+        return;
+    }
+    
+    // If the application is in the foreground, it will get a callback to application:didReceiveLocalNotification:.
+    // If its not, iOS will display the notification to the user.
+    [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
