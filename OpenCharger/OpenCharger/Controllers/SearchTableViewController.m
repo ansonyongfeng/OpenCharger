@@ -114,10 +114,28 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CTVC  = [self.storyboard instantiateViewControllerWithIdentifier:@"ChargerTable"];
-    CTVC.OC = self.OC;
-    CTVC.thisPeripheral = [self.OC.peripherals objectAtIndex:indexPath.row];
-    [self.navigationController pushViewController:CTVC animated:YES];
+    CBPeripheral *seletedPeripheral = [self.OC.peripherals objectAtIndex:indexPath.row];
+    
+    NSString *nameOfBLE = [NSString stringWithFormat:@"%@", seletedPeripheral.name];
+    
+   if ([nameOfBLE rangeOfString:@"OpenCharger"].location == NSNotFound) {
+       [self showMessage:@"This is not OpenCharger"];
+   }else{
+       CTVC  = [self.storyboard instantiateViewControllerWithIdentifier:@"ChargerTable"];
+       CTVC.OC = self.OC;
+       CTVC.thisPeripheral = [self.OC.peripherals objectAtIndex:indexPath.row];
+       [self.navigationController pushViewController:CTVC animated:YES];
+   }
+}
+
+- (void)showMessage:(NSString *) myMessage{
+    UIAlertView *message = [[UIAlertView alloc] initWithTitle:@"Hi"
+                                                      message:myMessage
+                                                     delegate:nil
+                                            cancelButtonTitle:@"OK"
+                                            otherButtonTitles:nil];
+    
+    [message show];
 }
 
 @end

@@ -308,6 +308,13 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Yongfeng He";
 				TargetAttributes = {
+					C57DF7D619360BC70021D190 = {
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
 					C57DF7FA19360BC80021D190 = {
 						TestTargetID = C57DF7D619360BC70021D190;
 					};
