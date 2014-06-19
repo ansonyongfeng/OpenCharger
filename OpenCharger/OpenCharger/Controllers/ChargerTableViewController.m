@@ -100,10 +100,6 @@
     [self calculatePower];
 
 }
-- (IBAction)turnOnButtonPressed:(id)sender {
-    NSLog(@"send OC code");
-    [self.OC sendCodeToOpenCharger:self.thisPeripheral openChargerCode:myOpenChargerCode chargeTime:myChargeTime];
-}
 
 - (void)calculatePower{
     [[UIDevice currentDevice] setBatteryMonitoringEnabled:YES];
@@ -124,6 +120,14 @@
         myChargeTime = [NSString stringWithFormat:@"%.0f", chargeTime];
     }
     self.powerSlider.value = ceil(chargeTime);
+}
+- (IBAction)powerSwitchChanged:(id)sender {
+    UISwitch *thisSwitch = (UISwitch *)sender;
+    if (thisSwitch.on) {
+        [self.OC sendCodeToOpenCharger:self.thisPeripheral openChargerCode:myOpenChargerCode chargeTime:myChargeTime];
+    }else{
+        [self.OC turnOffOpenCharger:self.thisPeripheral];
+    }
 }
 
 - (void)showMessage:(NSString *) myMessage{

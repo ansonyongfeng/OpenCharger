@@ -19,4 +19,5 @@
 
 @property (nonatomic, strong) CBPeripheral  *thisPeripheral;
 
+@property (weak, nonatomic) IBOutlet UISwitch *powerSwitch;
 @end

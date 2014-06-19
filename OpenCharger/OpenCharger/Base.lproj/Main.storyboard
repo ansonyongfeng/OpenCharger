@@ -392,16 +392,13 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kpt-Sb-Gdm">
-                                                    <rect key="frame" x="268" y="6" width="32" height="32"/>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="UU8-fe-DA0">
+                                                    <rect key="frame" x="251" y="6" width="51" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" backgroundImage="power.png">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
                                                     <connections>
-                                                        <action selector="turnOnButtonPressed:" destination="vgK-n9-CGY" eventType="touchUpInside" id="FoD-vh-40H"/>
+                                                        <action selector="powerSwitchChanged:" destination="vgK-n9-CGY" eventType="valueChanged" id="UoZ-jB-xna"/>
                                                     </connections>
-                                                </button>
+                                                </switch>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -417,6 +414,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                     <connections>
                         <outlet property="powerLabel" destination="tAl-eQ-EuR" id="Mwi-VA-moT"/>
                         <outlet property="powerSlider" destination="MAt-2v-a7a" id="GtH-Wb-1N1"/>
+                        <outlet property="powerSwitch" destination="UU8-fe-DA0" id="e62-ur-QgX"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Sh-ii-4gA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -639,7 +637,6 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="calcuator.png" width="32" height="32"/>
         <image name="chat.png" width="32" height="32"/>
         <image name="flash.png" width="30" height="30"/>
-        <image name="power.png" width="32" height="32"/>
         <image name="settings.png" width="32" height="32"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
