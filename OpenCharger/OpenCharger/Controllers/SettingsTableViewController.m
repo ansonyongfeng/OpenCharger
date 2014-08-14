@@ -16,6 +16,7 @@
 @implementation SettingsTableViewController{
     DatabankConnectModel        *DBCM;
     NSMutableArray              *objectsItemArray;
+    NSUUID *iBeacon1uuid;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -51,6 +52,10 @@
     
     self.uuidTextField.delegate = self;
     self.ocCodeTextField.delegate = self;
+    
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    [self initRegion];
     
 }
 
@@ -100,6 +105,83 @@
     }
     else{
         return YES;
+    }
+}
+
+- (void)initRegion {
+    //test iPad
+    //iBeacon1uuid = [[NSUUID alloc] initWithUUIDString:@"B9407F30-F5F8-466E-AFF9-25556B57FE61"];
+    
+    iBeacon1uuid = [[NSUUID alloc] initWithUUIDString:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D"];
+    self.beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:iBeacon1uuid identifier:@"Welcome"];
+    self.beaconRegion.notifyOnEntry = YES;
+    self.beaconRegion.notifyOnExit = YES;
+    
+    // launch app when display is turned on and inside region
+    self.beaconRegion.notifyEntryStateOnDisplay = YES;
+    
+    if ([CLLocationManager isMonitoringAvailableForClass:[CLBeaconRegion class]])
+    {
+        [_locationManager startMonitoringForRegion:self.beaconRegion];
+        [_locationManager startRangingBeaconsInRegion:self.beaconRegion];
+        
+        NSLog(@"iBeacon Yes 1");
+    }
+    NSLog(@"iBeacon Yes 2");
+}
+
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
+{
+    if (![CLLocationManager locationServicesEnabled]) {
+        NSLog(@"Couldn't turn on ranging: Location services are not enabled.");
+    }
+    
+    if ([CLLocationManager authorizationStatus] != kCLAuthorizationStatusAuthorized) {
+        NSLog(@"Couldn't turn on monitoring: Location services not authorised.");
+    }
+}
+
+- (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region{
+    if ([region.identifier isEqualToString:@"Welcome"]){
+        //do something
+        UILocalNotification *notification = [[UILocalNotification alloc] init];
+        notification.alertBody = @"Herzlich Willkommen! Tolle Angebote warten auf Sie.";
+        notification.soundName = UILocalNotificationDefaultSoundName;
+        notification.alertAction = [NSString stringWithFormat:@"welcome"];
+        
+        [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
+        
+        if ((notification.alertAction = @"welcome")) {
+            
+            NSLog(@"push");
+            
+        }
+    }else if ([region.identifier isEqualToString:@"ArielColor"]){
+        //do something
+        UILocalNotification *notification = [[UILocalNotification alloc] init];
+        notification.alertBody = @"Sie mögen Frische? Ariel gibts auch mit Febreze!";
+        notification.soundName = UILocalNotificationDefaultSoundName;
+        notification.alertAction = [NSString stringWithFormat:@"ArielColor1"];
+        
+        [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
+        
+        if ((notification.alertAction = @"ArielColor1")) {
+            
+            
+            
+        }
+    }else if ([region.identifier isEqualToString:@"Febreze"]){
+        //do something
+        UILocalNotification *notification = [[UILocalNotification alloc] init];
+        notification.alertBody = @"Frische Luft? Gibt's hier auch zum Mitnehmen. Mit Febreze!";
+        notification.soundName = UILocalNotificationDefaultSoundName;
+        notification.alertAction = [NSString stringWithFormat:@"Febreze1"];
+        NSLog(@"feb");
+        [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
+        
+        if ((notification.alertAction = @"Febreze1")) {
+            
+        }
     }
 }
 

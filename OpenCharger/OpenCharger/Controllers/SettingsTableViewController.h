@@ -18,6 +18,7 @@
 
 @property (strong, nonatomic) CLBeaconRegion *beaconRegion;
 @property (strong, nonatomic) CLLocationManager *locationManager;
-
+@property (strong, nonatomic) CLBeacon *beacon;
+@property (assign) BOOL isConnectingToBeacon;
 
 @end

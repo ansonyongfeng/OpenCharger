@@ -25,7 +25,7 @@
     return YES;
 }
 
-- (void)locationManager:(CLLocationManager *)manager didDetermineState:(CLRegionState)state forRegion:(CLRegion *)region
+/*- (void)locationManager:(CLLocationManager *)manager didDetermineState:(CLRegionState)state forRegion:(CLRegion *)region
 {
     NSMutableString *alertMessage = [[NSMutableString alloc] init];
     //databank
@@ -46,9 +46,9 @@
     
     if(state == CLRegionStateInside)
     {
-        /*alertMessage = [NSMutableString stringWithFormat:@"ni hao"];
+        alertMessage = [NSMutableString stringWithFormat:@"ni hao"];
          notification.alertBody = alertMessage;
-         notification.soundName = UILocalNotificationDefaultSoundName;*/
+         notification.soundName = UILocalNotificationDefaultSoundName;
         for (NSDictionary* key in objectsItemArray) {
             float thisPowerLevel = [[key objectForKey:@"power"] floatValue];
             NSString *thisAllDay = [key objectForKey:@"allday"];
@@ -85,7 +85,7 @@
     // If the application is in the foreground, it will get a callback to application:didReceiveLocalNotification:.
     // If its not, iOS will display the notification to the user.
     [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
-}
+}*/
 							
 - (void)applicationWillResignActive:(UIApplication *)application
 {
