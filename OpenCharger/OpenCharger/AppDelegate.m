@@ -15,6 +15,8 @@
     NSMutableArray              *objectsItemArray;
 }
 
+
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // This location manager will be used to notify the user of region state transitions.
@@ -86,6 +88,8 @@
     // If its not, iOS will display the notification to the user.
     [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
 }*/
+
+
 							
 - (void)applicationWillResignActive:(UIApplication *)application
 {

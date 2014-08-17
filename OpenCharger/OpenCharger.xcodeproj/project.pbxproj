@@ -7,11 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E4940D819A00820007A4724 /* data.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3E4940D619A00820007A4724 /* data.xcdatamodeld */; };
+		3E4940DA19A00866007A4724 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4940D919A00866007A4724 /* CoreData.framework */; };
+		3E4940DD19A0226A007A4724 /* Messages.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E4940DC19A0226A007A4724 /* Messages.m */; };
 		3E96DE1E193B409800B0D632 /* OpenChargerSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E96DE1D193B409800B0D632 /* OpenChargerSDK.m */; };
 		3E96DE25193B46B100B0D632 /* AddAndEditTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E96DE24193B46B100B0D632 /* AddAndEditTableViewController.m */; };
 		3EC42BA9193FB3AC0029156B /* SearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC42BA8193FB3AC0029156B /* SearchTableViewController.m */; };
 		3EC42BAF193FB69C0029156B /* SearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC42BAE193FB69C0029156B /* SearchTableViewCell.m */; };
 		3EC42BB2193FB7740029156B /* ActivityIndicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC42BB1193FB7740029156B /* ActivityIndicatorViewController.m */; };
+		3EDD7EFF19A0DA6600C643B3 /* CoreDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDD7EFE19A0DA6600C643B3 /* CoreDataModel.m */; };
 		C57DF7DB19360BC70021D190 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57DF7DA19360BC70021D190 /* Foundation.framework */; };
 		C57DF7DD19360BC70021D190 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57DF7DC19360BC70021D190 /* CoreGraphics.framework */; };
 		C57DF7DF19360BC70021D190 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57DF7DE19360BC70021D190 /* UIKit.framework */; };
@@ -52,6 +56,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3E4940D719A00820007A4724 /* data.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = data.xcdatamodel; sourceTree = "<group>"; };
+		3E4940D919A00866007A4724 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		3E4940DB19A0226A007A4724 /* Messages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Messages.h; sourceTree = "<group>"; };
+		3E4940DC19A0226A007A4724 /* Messages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Messages.m; sourceTree = "<group>"; };
 		3E96DE1C193B409800B0D632 /* OpenChargerSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenChargerSDK.h; sourceTree = "<group>"; };
 		3E96DE1D193B409800B0D632 /* OpenChargerSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenChargerSDK.m; sourceTree = "<group>"; };
 		3E96DE1F193B40EB00B0D632 /* OpenChargerDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenChargerDefines.h; sourceTree = "<group>"; };
@@ -63,6 +71,8 @@
 		3EC42BAE193FB69C0029156B /* SearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTableViewCell.m; sourceTree = "<group>"; };
 		3EC42BB0193FB7740029156B /* ActivityIndicatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityIndicatorViewController.h; sourceTree = "<group>"; };
 		3EC42BB1193FB7740029156B /* ActivityIndicatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityIndicatorViewController.m; sourceTree = "<group>"; };
+		3EDD7EFD19A0DA6600C643B3 /* CoreDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataModel.h; sourceTree = "<group>"; };
+		3EDD7EFE19A0DA6600C643B3 /* CoreDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataModel.m; sourceTree = "<group>"; };
 		C57DF7D719360BC70021D190 /* OpenCharger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenCharger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C57DF7DA19360BC70021D190 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C57DF7DC19360BC70021D190 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -106,6 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E4940DA19A00866007A4724 /* CoreData.framework in Frameworks */,
 				C57DF83B19362B620021D190 /* libsqlite3.0.dylib in Frameworks */,
 				C57DF83919362B370021D190 /* CoreLocation.framework in Frameworks */,
 				C57DF83719362B310021D190 /* CoreBluetooth.framework in Frameworks */,
@@ -160,6 +171,7 @@
 		C57DF7D919360BC70021D190 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3E4940D919A00866007A4724 /* CoreData.framework */,
 				C57DF83A19362B620021D190 /* libsqlite3.0.dylib */,
 				C57DF83819362B370021D190 /* CoreLocation.framework */,
 				C57DF83619362B310021D190 /* CoreBluetooth.framework */,
@@ -200,6 +212,7 @@
 				C57DF7E319360BC70021D190 /* InfoPlist.strings */,
 				C57DF7E619360BC70021D190 /* main.m */,
 				C57DF7E819360BC70021D190 /* OpenCharger-Prefix.pch */,
+				3E4940D619A00820007A4724 /* data.xcdatamodeld */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -246,6 +259,10 @@
 			children = (
 				C57DF82E19362AFB0021D190 /* DatabankConnectModel.h */,
 				C57DF82F19362AFB0021D190 /* DatabankConnectModel.m */,
+				3E4940DB19A0226A007A4724 /* Messages.h */,
+				3E4940DC19A0226A007A4724 /* Messages.m */,
+				3EDD7EFD19A0DA6600C643B3 /* CoreDataModel.h */,
+				3EDD7EFE19A0DA6600C643B3 /* CoreDataModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -309,7 +326,7 @@
 				ORGANIZATIONNAME = "Yongfeng He";
 				TargetAttributes = {
 					C57DF7D619360BC70021D190 = {
-						DevelopmentTeam = 89XHRUJPMQ;
+						DevelopmentTeam = 27YA5JUYEV;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -376,14 +393,17 @@
 				C57DF81819360C590021D190 /* SettingsTableViewController.m in Sources */,
 				C57DF81B19360C750021D190 /* ChargerTableViewController.m in Sources */,
 				3EC42BB2193FB7740029156B /* ActivityIndicatorViewController.m in Sources */,
+				3E4940D819A00820007A4724 /* data.xcdatamodeld in Sources */,
 				3EC42BA9193FB3AC0029156B /* SearchTableViewController.m in Sources */,
 				3E96DE25193B46B100B0D632 /* AddAndEditTableViewController.m in Sources */,
 				3EC42BAF193FB69C0029156B /* SearchTableViewCell.m in Sources */,
 				C57DF81519360C430021D190 /* MessagesTableViewController.m in Sources */,
 				3E96DE1E193B409800B0D632 /* OpenChargerSDK.m in Sources */,
 				C57DF83F19362BC70021D190 /* MessagesTableViewCell.m in Sources */,
+				3E4940DD19A0226A007A4724 /* Messages.m in Sources */,
 				C57DF7EB19360BC70021D190 /* AppDelegate.m in Sources */,
 				C57DF7E719360BC70021D190 /* main.m in Sources */,
+				3EDD7EFF19A0DA6600C643B3 /* CoreDataModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -608,6 +628,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		3E4940D619A00820007A4724 /* data.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3E4940D719A00820007A4724 /* data.xcdatamodel */,
+			);
+			currentVersion = 3E4940D719A00820007A4724 /* data.xcdatamodel */;
+			path = data.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C57DF7CF19360BC70021D190 /* Project object */;
 }

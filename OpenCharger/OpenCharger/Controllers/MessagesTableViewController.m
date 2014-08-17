@@ -10,12 +10,14 @@
 #import "DatabankConnectModel.h"
 #import "MessagesTableViewCell.h"
 #import "AddAndEditTableViewController.h"
+#import "Messages.h"
 
 @interface MessagesTableViewController (){
     DatabankConnectModel        *DBCM;
     MessagesTableViewCell       *MTC;
     AddAndEditTableViewController       *AAETVC;
     NSMutableArray              *objectsItemArray;
+    NSArray                     *fetchedRecordsArray;
 }
 
 @end
@@ -43,6 +45,9 @@
     objectsItemArray = [DBCM getItems:getItemsQuery];
     [DBCM closeDb];
     [self.tableView reloadData];
+    
+    //fetchedRecordsArray = [self getAllPhoneBookRecords];
+    //NSLog(@"%@", fetchedRecordsArray);
 
 }
 
@@ -156,6 +161,23 @@
     AAETVC  = [self.storyboard instantiateViewControllerWithIdentifier:@"AddAndEdit"];
     AAETVC.dataDictionary = [objectsItemArray objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:AAETVC animated:YES];
+}
+
+-(NSArray*)getAllPhoneBookRecords
+{
+    // initializing NSFetchRequest
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    
+    //Setting Entity to be Queried
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Messages" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    NSError* error;
+    
+    // Query on managedObjectContext With Generated fetchRequest
+    NSArray *fetchedRecords = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    // Returning Fetched Records
+    return fetchedRecords;
 }
 
 @end

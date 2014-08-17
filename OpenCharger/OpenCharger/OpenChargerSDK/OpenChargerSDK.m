@@ -158,7 +158,7 @@
 - (int) findBLEPeripherals:(int) timeout {
     if (self.cm.state != CBCentralManagerStatePoweredOn) {
         printf("CoreBluetooth not correctly initialized !\r\n");
-        printf("State = %d (%s)\r\n", self.cm.state, [self centralManagerStateToString:self.cm.state]);
+        printf("State = %ld (%s)\r\n", self.cm.state, [self centralManagerStateToString:self.cm.state]);
         return -1;
     }
     
@@ -451,7 +451,7 @@
 #pragma mark - CBCentralManagerDelegate
 
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central {
-    printf("Status of CoreBluetooth central manager changed %d (%s)\r\n",central.state,[self centralManagerStateToString:central.state]);
+    printf("Status of CoreBluetooth central manager changed %ld (%s)\r\n",central.state,[self centralManagerStateToString:central.state]);
     if (central.state == CBCentralManagerStatePoweredOn) {
         if (_powerOnBlock) {
             _powerOnBlock(nil, nil);

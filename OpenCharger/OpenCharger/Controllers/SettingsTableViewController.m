@@ -111,8 +111,10 @@
 - (void)initRegion {
     //test iPad
     //iBeacon1uuid = [[NSUUID alloc] initWithUUIDString:@"B9407F30-F5F8-466E-AFF9-25556B57FE61"];
+    //my iBeacon
+    //estimote B9407F30-F5F8-466E-AFF9-25556B57FE6D
     
-    iBeacon1uuid = [[NSUUID alloc] initWithUUIDString:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D"];
+    iBeacon1uuid = [[NSUUID alloc] initWithUUIDString:@"BA96930E-34B5-40BD-E8B9-8DB2823B07CC"];
     self.beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:iBeacon1uuid identifier:@"Welcome"];
     self.beaconRegion.notifyOnEntry = YES;
     self.beaconRegion.notifyOnExit = YES;
@@ -122,8 +124,8 @@
     
     if ([CLLocationManager isMonitoringAvailableForClass:[CLBeaconRegion class]])
     {
-        [_locationManager startMonitoringForRegion:self.beaconRegion];
-        [_locationManager startRangingBeaconsInRegion:self.beaconRegion];
+        [self.locationManager startMonitoringForRegion:self.beaconRegion];
+        [self.locationManager startRangingBeaconsInRegion:self.beaconRegion];
         
         NSLog(@"iBeacon Yes 1");
     }
