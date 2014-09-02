@@ -9,6 +9,7 @@
 #import "AddAndEditTableViewController.h"
 #import "DatabankConnectModel.h"
 #import "Messages.h"
+#import "CoreDataModel.h"
 
 
 @interface AddAndEditTableViewController (){
@@ -78,12 +79,14 @@
         
         [self setValueToView];
     }
-    
-    fetchedRecordsArray = [self getAllPhoneBookRecords];
+    CoreDataModel   *CDM = [[CoreDataModel alloc] init];
+    fetchedRecordsArray = [CDM getAllPhoneBookRecords];
     
     for (int i = 0; i < [fetchedRecordsArray count]; i++)
     {
+
         Messages *thisLine = [fetchedRecordsArray objectAtIndex:i];
+        NSLog(@"%@", thisLine.id);
         NSLog(@"%@", thisLine.message);
 
     }
@@ -95,88 +98,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
--(void)saveCoreData{
-    // Add Entry to PhoneBook Data base and reset all fields
-    
-    //  1
-    Messages *newEntry = [NSEntityDescription insertNewObjectForEntityForName:@"Messages" inManagedObjectContext:self.managedObjectContext];
-    //  2
-    
-    newEntry.message = @"hello world";
-
-    //  3
-    NSError *error;
-    if (![self.managedObjectContext save:&error]) {
-        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-    }
-
-}
-
-/**********Core Data beginn************/
-// 1
-- (NSManagedObjectContext *) managedObjectContext {
-    if (_managedObjectContext != nil) {
-        return _managedObjectContext;
-    }
-    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
-    if (coordinator != nil) {
-        _managedObjectContext = [[NSManagedObjectContext alloc] init];
-        [_managedObjectContext setPersistentStoreCoordinator: coordinator];
-    }
-    
-    return _managedObjectContext;
-}
-
-//2
-- (NSManagedObjectModel *)managedObjectModel {
-    if (_managedObjectModel != nil) {
-        return _managedObjectModel;
-    }
-    _managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];
-    
-    return _managedObjectModel;
-}
-
-//3
-- (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
-    if (_persistentStoreCoordinator != nil) {
-        return _persistentStoreCoordinator;
-    }
-    NSURL *storeUrl = [NSURL fileURLWithPath: [[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"coredata.sqlite"]];
-    NSError *error = nil;
-    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc]
-                                   initWithManagedObjectModel:[self managedObjectModel]];
-    if(![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType
-                                                  configuration:nil URL:storeUrl options:nil error:&error]) {
-        /*Error for store creation should be handled in here*/
-    }
-    
-    return _persistentStoreCoordinator;
-}
-
-- (NSString *)applicationDocumentsDirectory {
-    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-}
-
--(NSArray*)getAllPhoneBookRecords
-{
-    // initializing NSFetchRequest
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    
-    //Setting Entity to be Queried
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Messages" inManagedObjectContext:self.managedObjectContext];
-    [fetchRequest setEntity:entity];
-    NSError* error;
-    
-    // Query on managedObjectContext With Generated fetchRequest
-    NSArray *fetchedRecords = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    
-    // Returning Fetched Records
-    return fetchedRecords;
-}
-/**********Core Data end************/
 
 - (void)saveMessage{
     message     = self.messageTextField.text;
@@ -198,7 +119,7 @@
         NSLog(@"%@",insertFavItemsQuery);
         [DBCM closeDb];
     }
-    [self saveCoreData];
+
     //[self.navigationController popToRootViewControllerAnimated:YES];
 }
 
