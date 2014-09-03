@@ -7,10 +7,10 @@
 //
 
 #import "MessagesTableViewCell.h"
-#import "DatabankConnectModel.h"
+
 
 @implementation MessagesTableViewCell{
-    DatabankConnectModel        *DBCM;
+
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -34,7 +34,7 @@
     // Configure the view for the selected state
 }
 - (IBAction)activeSwitchChanged:(id)sender {
-    UISwitch *thisSwitch = (UISwitch *)sender;
+    /*UISwitch *thisSwitch = (UISwitch *)sender;
     DBCM = [[DatabankConnectModel alloc] init];
     [DBCM openDb];
     if (thisSwitch.on) {
@@ -44,7 +44,7 @@
     }else{
         NSString *getItemsQuery = [NSString stringWithFormat:@"UPDATE messages SET  active = '0' WHERE id = '%@'", self.thisID];
         [DBCM updateItem:getItemsQuery];
-    }
+    }*/
 }
 
 @end

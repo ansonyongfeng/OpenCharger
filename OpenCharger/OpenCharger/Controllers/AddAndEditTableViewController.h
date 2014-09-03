@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CoreData/CoreData.h>
 
 @interface AddAndEditTableViewController : UITableViewController<UITextFieldDelegate>
 
@@ -21,9 +20,5 @@
 @property (weak, nonatomic) IBOutlet UIDatePicker *dateTimePicker;
 
 @property (strong, nonatomic) NSDictionary  *dataDictionary;
-
-@property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
-@property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
-@property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator ;
 
 @end

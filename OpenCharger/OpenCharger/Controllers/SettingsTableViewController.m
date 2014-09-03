@@ -7,16 +7,15 @@
 //
 
 #import "SettingsTableViewController.h"
-#import "DatabankConnectModel.h"
+
 
 @interface SettingsTableViewController ()
 
 @end
 
 @implementation SettingsTableViewController{
-    DatabankConnectModel        *DBCM;
-    NSMutableArray              *objectsItemArray;
-    NSUUID *iBeacon1uuid;
+    NSMutableArray  *objectsItemArray;
+    NSUUID          *iBeacon1uuid;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -31,11 +30,11 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     //databank
-    DBCM = [[DatabankConnectModel alloc] init];
+    /*DBCM = [[DatabankConnectModel alloc] init];
     [DBCM openDb];
     NSString *getItemsQuery = [NSString stringWithFormat:@"SELECT * FROM setting"];
     objectsItemArray = [DBCM getSettingItems:getItemsQuery];
-    [DBCM closeDb];
+    [DBCM closeDb];*/
     self.uuidTextField.text = [[objectsItemArray objectAtIndex:0] objectForKey:@"uuid"];
     self.ocCodeTextField.text = [[objectsItemArray objectAtIndex:0] objectForKey:@"occode"];
 }
@@ -70,12 +69,12 @@
     
     if (thisUUID) {
         //update db
-        DBCM = [[DatabankConnectModel alloc] init];
+        /*DBCM = [[DatabankConnectModel alloc] init];
         [DBCM openDb];
         
         NSString *updateItemQuery = [NSString stringWithFormat:@"UPDATE setting SET uuid = '%@', occode = '%@' WHERE id = 1", self.uuidTextField.text, self.ocCodeTextField.text];
         [DBCM updateItem:updateItemQuery];
-        [DBCM closeDb];
+        [DBCM closeDb];*/
         //init iBeacon
         [self initBeacon:thisUUID];
         [self showMessage:@"Settings already configured"];

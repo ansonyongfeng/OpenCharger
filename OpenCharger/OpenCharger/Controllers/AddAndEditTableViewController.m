@@ -7,7 +7,6 @@
 //
 
 #import "AddAndEditTableViewController.h"
-#import "DatabankConnectModel.h"
 #import "Messages.h"
 #import "CoreDataModel.h"
 
@@ -19,18 +18,14 @@
     NSString *power;
     NSString *allDay;
     NSString *starts;
-    DatabankConnectModel    *DBCM;
     NSArray *fetchedRecordsArray;
+    CoreDataModel   *CDM;
     
 }
 
 @end
 
 @implementation AddAndEditTableViewController
-
-@synthesize managedObjectContext = _managedObjectContext;
-@synthesize managedObjectModel = _managedObjectModel;
-@synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -79,8 +74,8 @@
         
         [self setValueToView];
     }
-    CoreDataModel   *CDM = [[CoreDataModel alloc] init];
-    fetchedRecordsArray = [CDM getAllPhoneBookRecords];
+    CDM = [[CoreDataModel alloc] init];
+    fetchedRecordsArray = [CDM getAllMessageRecords];
     
     for (int i = 0; i < [fetchedRecordsArray count]; i++)
     {
@@ -102,22 +97,33 @@
 - (void)saveMessage{
     message     = self.messageTextField.text;
     
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"HH:mm"];
+    NSDate *dateFromString = [[NSDate alloc] init];
+    dateFromString = [dateFormatter dateFromString:starts];
+    
+    NSDictionary *dict = @{
+                            @"message" : message,
+                            @"entry" : entry,
+                            @"power" : power,
+                            @"allday" : allDay,
+                            @"timing" : @"12:00",
+                            @"active" : @"1",
+                            };
+    
+    [CDM saveData:dict];
+    
     if (self.dataDictionary) {
-        DBCM = [[DatabankConnectModel alloc] init];
-        [DBCM openDb];
         
-        NSString *updateItemQuery = [NSString stringWithFormat:@"UPDATE messages SET message = '%@', entry = '%@', power = '%@', allday = '%@', timing = '%@' WHERE id = %@", message, entry, power, allDay, starts, messageID];
-        [DBCM updateItem:updateItemQuery];
-        [DBCM closeDb];
     }else{
         message = self.messageTextField.text;
         //NSLog(@"%@, %@, %@, %@, %@, ", message, entry, power, allDay, timing);
-        DBCM = [[DatabankConnectModel alloc] init];
+        /*DBCM = [[DatabankConnectModel alloc] init];
         [DBCM openDb];
         NSString *insertFavItemsQuery = [NSString stringWithFormat:@"INSERT INTO messages (message, entry, power, allday, timing, active) VALUES ('%@', '%@', '%@', '%@', '%@', '1')", message, entry, power, allDay, starts];
         [DBCM insertItems:insertFavItemsQuery];
         NSLog(@"%@",insertFavItemsQuery);
-        [DBCM closeDb];
+        [DBCM closeDb];*/
     }
 
     //[self.navigationController popToRootViewControllerAnimated:YES];

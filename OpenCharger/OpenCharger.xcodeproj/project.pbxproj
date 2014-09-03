@@ -38,7 +38,6 @@
 		C57DF82319360E060021D190 /* opencharger.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = C57DF82219360E060021D190 /* opencharger.sqlite3 */; };
 		C57DF825193613E70021D190 /* power@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C57DF824193613E70021D190 /* power@2x.png */; };
 		C57DF8291936140B0021D190 /* calcuator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C57DF8281936140B0021D190 /* calcuator@2x.png */; };
-		C57DF83019362AFB0021D190 /* DatabankConnectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C57DF82F19362AFB0021D190 /* DatabankConnectModel.m */; };
 		C57DF83719362B310021D190 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57DF83619362B310021D190 /* CoreBluetooth.framework */; };
 		C57DF83919362B370021D190 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57DF83819362B370021D190 /* CoreLocation.framework */; };
 		C57DF83B19362B620021D190 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C57DF83A19362B620021D190 /* libsqlite3.0.dylib */; };
@@ -102,8 +101,6 @@
 		C57DF82219360E060021D190 /* opencharger.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = opencharger.sqlite3; sourceTree = "<group>"; };
 		C57DF824193613E70021D190 /* power@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "power@2x.png"; sourceTree = "<group>"; };
 		C57DF8281936140B0021D190 /* calcuator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calcuator@2x.png"; sourceTree = "<group>"; };
-		C57DF82E19362AFB0021D190 /* DatabankConnectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatabankConnectModel.h; sourceTree = "<group>"; };
-		C57DF82F19362AFB0021D190 /* DatabankConnectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabankConnectModel.m; sourceTree = "<group>"; };
 		C57DF83619362B310021D190 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		C57DF83819362B370021D190 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C57DF83A19362B620021D190 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
@@ -257,8 +254,6 @@
 		C57DF82D19362AE80021D190 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				C57DF82E19362AFB0021D190 /* DatabankConnectModel.h */,
-				C57DF82F19362AFB0021D190 /* DatabankConnectModel.m */,
 				3E4940DB19A0226A007A4724 /* Messages.h */,
 				3E4940DC19A0226A007A4724 /* Messages.m */,
 				3EDD7EFD19A0DA6600C643B3 /* CoreDataModel.h */,
@@ -326,7 +321,7 @@
 				ORGANIZATIONNAME = "Yongfeng He";
 				TargetAttributes = {
 					C57DF7D619360BC70021D190 = {
-						DevelopmentTeam = 27YA5JUYEV;
+						DevelopmentTeam = 89XHRUJPMQ;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -389,7 +384,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C57DF83019362AFB0021D190 /* DatabankConnectModel.m in Sources */,
 				C57DF81819360C590021D190 /* SettingsTableViewController.m in Sources */,
 				C57DF81B19360C750021D190 /* ChargerTableViewController.m in Sources */,
 				3EC42BB2193FB7740029156B /* ActivityIndicatorViewController.m in Sources */,

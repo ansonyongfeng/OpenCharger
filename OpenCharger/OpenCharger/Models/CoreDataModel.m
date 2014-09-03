@@ -16,7 +16,7 @@
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
 
--(NSArray*)getAllPhoneBookRecords
+-(NSArray*)getAllMessageRecords
 {
     NSManagedObjectContext *context = [self managedObjectContext];
     
@@ -24,7 +24,7 @@
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     
     //Setting Entity to be Queried
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"MyMessages" inManagedObjectContext:context];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"OCMessages" inManagedObjectContext:context];
     [fetchRequest setEntity:entity];
     NSError* error;
     
@@ -35,13 +35,23 @@
     return fetchedRecords;
 }
 
--(void)saveCoreData: (NSString *)thisMessage{
+-(void)saveData: (NSDictionary *)dataDict{
     // Add Entry to PhoneBook Data base and reset all fields
     
+    NSLog(@"%@", dataDict);
+    
+    NSManagedObjectContext *context = [self managedObjectContext];
+    
     //  1
-    Messages *newEntry = [NSEntityDescription insertNewObjectForEntityForName:@"MyMessages" inManagedObjectContext:_managedObjectContext];
+    Messages *newEntry = [NSEntityDescription insertNewObjectForEntityForName:@"OCMessages" inManagedObjectContext:context];
     //  2
-    newEntry.message = thisMessage;
+    newEntry.message    = [dataDict objectForKey:@"message"];
+    newEntry.entry      = [dataDict objectForKey:@"entry"];
+    newEntry.power      = [dataDict objectForKey:@"power"];
+    newEntry.allday     = [dataDict objectForKey:@"allday"];
+    newEntry.start      = [dataDict objectForKey:@"timing"];
+    newEntry.active     = [dataDict objectForKey:@"active"];
+    
     //  3
     NSError *error;
     if (![_managedObjectContext save:&error]) {

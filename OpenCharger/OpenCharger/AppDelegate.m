@@ -7,11 +7,10 @@
 //
 
 #import "AppDelegate.h"
-#import "DatabankConnectModel.h"
+
 
 @implementation AppDelegate{
     CLLocationManager *locationManager;
-    DatabankConnectModel        *DBCM;
     NSMutableArray              *objectsItemArray;
 }
 

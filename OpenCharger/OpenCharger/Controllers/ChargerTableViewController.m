@@ -7,14 +7,13 @@
 //
 
 #import "ChargerTableViewController.h"
-#import "DatabankConnectModel.h"
+
 
 @interface ChargerTableViewController (){
-    NSString    *myChargeTime;
-    NSString    *myUUID;
-    NSString    *myOpenChargerCode;
-    DatabankConnectModel        *DBCM;
-    NSMutableArray              *objectsItemArray;
+    NSString            *myChargeTime;
+    NSString            *myUUID;
+    NSString            *myOpenChargerCode;
+    NSMutableArray      *objectsItemArray;
 }
 
 @end
@@ -47,11 +46,11 @@
     self.tableView.delegate = self;
     
     //databank
-    DBCM = [[DatabankConnectModel alloc] init];
+    /*DBCM = [[DatabankConnectModel alloc] init];
     [DBCM openDb];
     NSString *getItemsQuery = [NSString stringWithFormat:@"SELECT * FROM setting"];
     objectsItemArray = [DBCM getSettingItems:getItemsQuery];
-    [DBCM closeDb];
+    [DBCM closeDb];*/
     myUUID = [[objectsItemArray objectAtIndex:0] objectForKey:@"uuid"];
     myOpenChargerCode = [[objectsItemArray objectAtIndex:0] objectForKey:@"occode"];
     NSLog(@"%@, %@", myUUID, myOpenChargerCode);

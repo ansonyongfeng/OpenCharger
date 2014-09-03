@@ -7,17 +7,16 @@
 //
 
 #import "MessagesTableViewController.h"
-#import "DatabankConnectModel.h"
 #import "MessagesTableViewCell.h"
 #import "AddAndEditTableViewController.h"
 #import "Messages.h"
+#import "CoreDataModel.h"
 
 @interface MessagesTableViewController (){
-    DatabankConnectModel        *DBCM;
-    MessagesTableViewCell       *MTC;
-    AddAndEditTableViewController       *AAETVC;
-    NSMutableArray              *objectsItemArray;
-    NSArray                     *fetchedRecordsArray;
+    MessagesTableViewCell           *MTC;
+    AddAndEditTableViewController   *AAETVC;
+    NSArray                         *objectsItemArray;
+    CoreDataModel                   *CDM;
 }
 
 @end
@@ -38,16 +37,13 @@
     self.tableView.dataSource   = self;
     self.tableView.delegate     = self;
     
-    //databank
-    DBCM = [[DatabankConnectModel alloc] init];
-    [DBCM openDb];
-    NSString *getItemsQuery = [NSString stringWithFormat:@"SELECT * FROM messages"];
-    objectsItemArray = [DBCM getItems:getItemsQuery];
-    [DBCM closeDb];
+    //coredata
+    CDM = [[CoreDataModel alloc] init];
+    objectsItemArray = [CDM getAllMessageRecords];
+    
     [self.tableView reloadData];
     
-    //fetchedRecordsArray = [self getAllPhoneBookRecords];
-    //NSLog(@"%@", fetchedRecordsArray);
+    NSLog(@"%@", objectsItemArray);
 
 }
 
@@ -88,29 +84,31 @@
         MTC = [[MessagesTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
     
-    MTC.thisID = [[objectsItemArray objectAtIndex:indexPath.row] objectForKey:@"id"];
+    Messages *messages = [objectsItemArray objectAtIndex:indexPath.row];
     
-    MTC.messageLabel.text = [NSString stringWithFormat:@"%@", [[objectsItemArray objectAtIndex:indexPath.row] objectForKey:@"message"]];
+    MTC.thisObjectID = [messages objectID];
     
-    NSString *entry = [[objectsItemArray objectAtIndex:indexPath.row] objectForKey:@"entry"];
-    if ([entry isEqualToString:@"1"]) {
+    MTC.messageLabel.text = messages.message;
+    
+    NSString *entry = messages.entry;
+    if ([entry  isEqual: @"1"]) {
         MTC.entryLabel.text = @"Entry";
     }else{
         MTC.entryLabel.text = @"Exit";
     }
     
-    NSString *power = [[objectsItemArray objectAtIndex:indexPath.row] objectForKey:@"power"];
+    NSString *power = messages.power;
     MTC.powerLabel.text = [NSString stringWithFormat:@"Battery < %@\uFF05", power];
     
-    NSString *allDay = [[objectsItemArray objectAtIndex:indexPath.row] objectForKey:@"allday"];
-    NSString *timing = [[objectsItemArray objectAtIndex:indexPath.row] objectForKey:@"timing"];
+    NSString *allDay = messages.allday;
+    //NSString *timing = messages.timing;
     if ([allDay isEqualToString:@"1"]) {
         MTC.allDayLabel.text = @"All-day";
     }else{
-        MTC.allDayLabel.text = timing;
+        //MTC.allDayLabel.text = timing;
     }
     
-    NSString *active = [[objectsItemArray objectAtIndex:indexPath.row] objectForKey:@"active"];
+    NSString *active = messages.active;
     if ([active isEqualToString:@"1"]) {
         [MTC.activeSwitch setOn:YES animated:YES];
     }else{
@@ -127,13 +125,6 @@
         // Delete the row from the data source
         if (editingStyle == UITableViewCellEditingStyleDelete) {
             // Delete the row from the data source
-            DBCM = [[DatabankConnectModel alloc] init];
-            [DBCM openDb];
-            NSString *deleteItemsQuery = [NSString stringWithFormat:@"DELETE FROM messages WHERE id = %@", [[objectsItemArray objectAtIndex:indexPath.row] objectForKey:@"id"]];
-            [DBCM deleteItems:deleteItemsQuery];
-            [DBCM closeDb];
-            
-            [objectsItemArray removeObjectAtIndex:indexPath.row];
             [self.tableView reloadData];
             //[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
             NSLog(@"%@", @"delete");
@@ -158,26 +149,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    AAETVC  = [self.storyboard instantiateViewControllerWithIdentifier:@"AddAndEdit"];
+    Messages *messages = [objectsItemArray objectAtIndex:indexPath.row];
+    NSManagedObjectID *objectID = [messages objectID];
+    NSLog(@"%@", objectID);
+    /*AAETVC  = [self.storyboard instantiateViewControllerWithIdentifier:@"AddAndEdit"];
     AAETVC.dataDictionary = [objectsItemArray objectAtIndex:indexPath.row];
-    [self.navigationController pushViewController:AAETVC animated:YES];
+    [self.navigationController pushViewController:AAETVC animated:YES];*/
 }
 
--(NSArray*)getAllPhoneBookRecords
-{
-    // initializing NSFetchRequest
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    
-    //Setting Entity to be Queried
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Messages" inManagedObjectContext:self.managedObjectContext];
-    [fetchRequest setEntity:entity];
-    NSError* error;
-    
-    // Query on managedObjectContext With Generated fetchRequest
-    NSArray *fetchedRecords = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-    
-    // Returning Fetched Records
-    return fetchedRecords;
-}
 
 @end

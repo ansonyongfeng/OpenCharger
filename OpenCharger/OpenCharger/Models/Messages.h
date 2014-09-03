@@ -12,7 +12,12 @@
 
 @interface Messages : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * id;
-@property (nonatomic, retain) NSString * message;
+@property (nonatomic, retain) NSString  * id;
+@property (nonatomic, retain) NSString  * message;
+@property (nonatomic, retain) NSString  * entry;
+@property (nonatomic, retain) NSString  * power;
+@property (nonatomic, retain) NSString  * allday;
+@property (nonatomic, retain) NSString  * start;
+@property (nonatomic, retain) NSString  * active;
 
 @end

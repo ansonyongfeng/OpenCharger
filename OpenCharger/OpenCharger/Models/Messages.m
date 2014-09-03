@@ -13,5 +13,11 @@
 
 @dynamic id;
 @dynamic message;
+@dynamic entry;
+@dynamic power;
+@dynamic allday;
+@dynamic start;
+@dynamic active;
+
 
 @end
