@@ -4,12 +4,11 @@
         <attribute name="active" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="allday" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="entry" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="message" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="power" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="start" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="OCMessages" positionX="-63" positionY="-18" width="128" height="148"/>
+        <element name="OCMessages" positionX="-63" positionY="-18" width="128" height="135"/>
     </elements>
 </model>

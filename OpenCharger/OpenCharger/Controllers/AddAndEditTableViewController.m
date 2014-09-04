@@ -16,7 +16,7 @@
     NSString *message;
     NSString *entry;
     NSString *power;
-    NSString *allDay;
+    NSString *allday;
     NSString *starts;
     NSArray *fetchedRecordsArray;
     CoreDataModel   *CDM;
@@ -57,8 +57,8 @@
         message     = [self.dataDictionary objectForKey:@"message"];
         entry       = [self.dataDictionary objectForKey:@"entry"];
         power       = [self.dataDictionary objectForKey:@"power"];
-        allDay      = [self.dataDictionary objectForKey:@"allday"];
-        starts      = [self.dataDictionary objectForKey:@"timing"];
+        allday      = [self.dataDictionary objectForKey:@"allday"];
+        starts      = [self.dataDictionary objectForKey:@"start"];
         
         [self setValueToView];
     }else{
@@ -66,7 +66,7 @@
         message     = @"";
         entry       = @"1";
         power       = @"30";
-        allDay      = @"1";
+        allday      = @"1";
         NSDate *currentTime = [NSDate date];
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"HH:mm"];
@@ -106,8 +106,8 @@
                             @"message" : message,
                             @"entry" : entry,
                             @"power" : power,
-                            @"allday" : allDay,
-                            @"timing" : @"12:00",
+                            @"allday" : allday,
+                            @"start" : @"12:00",
                             @"active" : @"1",
                             };
     
@@ -155,10 +155,10 @@
 - (IBAction)allDaySwitchChanged:(id)sender {
     UISwitch *thisSwitch = (UISwitch *)sender;
     if (thisSwitch.on) {
-        allDay = @"1";
+        allday = @"1";
         self.timingLabel.textColor = [UIColor lightGrayColor];
     }else{
-        allDay = @"0";
+        allday = @"0";
         self.timingLabel.textColor = [UIColor darkGrayColor];
     }
 }
@@ -186,7 +186,7 @@
     self.powerSlider.value = [power floatValue];
     self.powerLabel.text = [NSString stringWithFormat:@"%@\uFF05", power];
     
-    if ([allDay isEqualToString:@"1"]) {
+    if ([allday isEqualToString:@"1"]) {
         self.timingLabel.textColor = [UIColor lightGrayColor];
         [self.allDaySwitch setOn:YES];
     }else{

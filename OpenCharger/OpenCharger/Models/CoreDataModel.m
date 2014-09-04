@@ -49,7 +49,7 @@
     newEntry.entry      = [dataDict objectForKey:@"entry"];
     newEntry.power      = [dataDict objectForKey:@"power"];
     newEntry.allday     = [dataDict objectForKey:@"allday"];
-    newEntry.start      = [dataDict objectForKey:@"timing"];
+    newEntry.start      = [dataDict objectForKey:@"start"];
     newEntry.active     = [dataDict objectForKey:@"active"];
     
     //  3
