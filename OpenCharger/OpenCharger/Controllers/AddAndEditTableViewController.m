@@ -7,20 +7,18 @@
 //
 
 #import "AddAndEditTableViewController.h"
-#import "Messages.h"
+
 #import "CoreDataModel.h"
 
 
 @interface AddAndEditTableViewController (){
-    NSString *messageID;
+
     NSString *message;
     NSString *entry;
     NSString *power;
     NSString *allday;
-    NSString *starts;
-    NSArray *fetchedRecordsArray;
-    CoreDataModel   *CDM;
-    
+    NSString *start;
+    NSString *active;
 }
 
 @end
@@ -51,41 +49,25 @@
     
     self.messageTextField.delegate = self;
     
-    if (self.dataDictionary) {
-        NSLog(@"%@", self.dataDictionary);
-        messageID   = [self.dataDictionary objectForKey:@"id"];
-        message     = [self.dataDictionary objectForKey:@"message"];
-        entry       = [self.dataDictionary objectForKey:@"entry"];
-        power       = [self.dataDictionary objectForKey:@"power"];
-        allday      = [self.dataDictionary objectForKey:@"allday"];
-        starts      = [self.dataDictionary objectForKey:@"start"];
-        
+    if (self.myMessage) {
+        message = self.myMessage.message;
+        entry   = self.myMessage.entry;
+        power   = self.myMessage.power;
+        allday  = self.myMessage.allday;
+        start   = self.myMessage.start;
+        active  = self.myMessage.active;
         [self setValueToView];
     }else{
-
-        message     = @"";
-        entry       = @"1";
-        power       = @"30";
-        allday      = @"1";
         NSDate *currentTime = [NSDate date];
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"HH:mm"];
-        starts      = [dateFormatter stringFromDate: currentTime];
         
+        message = self.messageTextField.text;
+        entry   = @"1";
+        power   = @"30";
+        allday  = @"1";
+        start   = [self dateToString:currentTime];
+        active  = @"1";
         [self setValueToView];
     }
-    CDM = [[CoreDataModel alloc] init];
-    fetchedRecordsArray = [CDM getAllMessageRecords];
-    
-    for (int i = 0; i < [fetchedRecordsArray count]; i++)
-    {
-
-        Messages *thisLine = [fetchedRecordsArray objectAtIndex:i];
-        NSLog(@"%@", thisLine.id);
-        NSLog(@"%@", thisLine.message);
-
-    }
-
 }
 
 - (void)didReceiveMemoryWarning
@@ -95,43 +77,24 @@
 }
 
 - (void)saveMessage{
-    message     = self.messageTextField.text;
-    
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"HH:mm"];
-    NSDate *dateFromString = [[NSDate alloc] init];
-    dateFromString = [dateFormatter dateFromString:starts];
-    
+    CoreDataModel *CDM = [[CoreDataModel alloc] init];
     NSDictionary *dict = @{
-                            @"message" : message,
-                            @"entry" : entry,
-                            @"power" : power,
-                            @"allday" : allday,
-                            @"start" : @"12:00",
-                            @"active" : @"1",
+                            @"message"  : message,
+                            @"entry"    : entry,
+                            @"power"    : power,
+                            @"allday"   : allday,
+                            @"start"    : start,
+                            @"active"   : active,
                             };
     
     [CDM saveData:dict];
-    
-    if (self.dataDictionary) {
-        
-    }else{
-        message = self.messageTextField.text;
-        //NSLog(@"%@, %@, %@, %@, %@, ", message, entry, power, allDay, timing);
-        /*DBCM = [[DatabankConnectModel alloc] init];
-        [DBCM openDb];
-        NSString *insertFavItemsQuery = [NSString stringWithFormat:@"INSERT INTO messages (message, entry, power, allday, timing, active) VALUES ('%@', '%@', '%@', '%@', '%@', '1')", message, entry, power, allDay, starts];
-        [DBCM insertItems:insertFavItemsQuery];
-        NSLog(@"%@",insertFavItemsQuery);
-        [DBCM closeDb];*/
-    }
-
-    //[self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if(textField == self.messageTextField) {
         [textField resignFirstResponder];
+        message = self.messageTextField.text;
     }
     return NO;
 }
@@ -164,11 +127,21 @@
 }
 - (IBAction)datePickerChanged:(id)sender {
     UIDatePicker *thisDatePicker = (UIDatePicker *)sender;
-    NSDate *thisDatePickerTime = thisDatePicker.date;
+    start      = [self dateToString:thisDatePicker.date];
+    self.timingLabel.text = [self dateToString:thisDatePicker.date];
+}
+
+-(NSDate *)stringToDate:(NSString *)dataString{
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"HH:mm"];
-    starts      = [dateFormatter stringFromDate: thisDatePickerTime];
-    self.timingLabel.text = [dateFormatter stringFromDate: thisDatePickerTime];
+    NSDate *date = [dateFormatter dateFromString:dataString];
+    return date;
+}
+
+-(NSString *)dateToString:(NSDate *)date{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"HH:mm"];
+    return [dateFormatter stringFromDate: date];
 }
 
 - (void)setValueToView{
@@ -194,13 +167,9 @@
         [self.allDaySwitch setOn:NO];
     }
     
-    self.timingLabel.text = starts;
-    
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat: @"HH:mm"];
-    NSDate *destDate= [dateFormatter dateFromString:starts];
-    
-    [self.dateTimePicker setDate:destDate];
+    self.timingLabel.text = start;
+    NSDate *myDate= [self stringToDate:start];
+    [self.dateTimePicker setDate:myDate];
 }
 
 @end

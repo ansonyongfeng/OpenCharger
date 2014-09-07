@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "Messages.h"
 
 @interface CoreDataModel : NSObject
 
@@ -16,6 +17,8 @@
 @property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator ;
 
 -(NSArray *)getAllMessageRecords;
+-(Messages *)getSingleMessageRecord:(NSManagedObjectID *)manageObjectID;
+
 -(void)saveData:(NSDictionary *)dataDict;
 
 @end

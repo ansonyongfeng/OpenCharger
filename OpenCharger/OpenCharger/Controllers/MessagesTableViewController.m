@@ -43,7 +43,7 @@
     
     [self.tableView reloadData];
     
-    NSLog(@"%@", objectsItemArray);
+    //NSLog(@"%@", objectsItemArray);
 
 }
 
@@ -149,12 +149,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Messages *messages = [objectsItemArray objectAtIndex:indexPath.row];
-    NSManagedObjectID *objectID = [messages objectID];
-    NSLog(@"%@", objectID);
-    /*AAETVC  = [self.storyboard instantiateViewControllerWithIdentifier:@"AddAndEdit"];
-    AAETVC.dataDictionary = [objectsItemArray objectAtIndex:indexPath.row];
-    [self.navigationController pushViewController:AAETVC animated:YES];*/
+    Messages *message = [objectsItemArray objectAtIndex:indexPath.row];
+    //NSManagedObjectID *objectID = [message objectID];
+    //NSLog(@"%@", objectID);
+    AAETVC  = [self.storyboard instantiateViewControllerWithIdentifier:@"AddAndEdit"];
+    AAETVC.myMessage = message;
+    [self.navigationController pushViewController:AAETVC animated:YES];
 }
 
 

@@ -60,6 +60,23 @@
     
 }
 
+-(Messages *)getSingleMessageRecord:(NSManagedObjectID *)manageObjectID{
+    NSLog(@"AAETVC MOID: %@", manageObjectID);
+    NSArray *fetchedRecordsArray = [self getAllMessageRecords];
+    for (int i = 0; i < [fetchedRecordsArray count]; i++)
+    {
+        
+        Messages *message = [fetchedRecordsArray objectAtIndex:i];
+        NSLog(@"message MOID: %@", [message objectID]);
+        if ([message objectID] == manageObjectID) {
+            return message;
+        }
+        return false;
+    }
+    return false;
+}
+    
+
 /**********Core Data beginn************/
 // 1
 - (NSManagedObjectContext *) managedObjectContext {
