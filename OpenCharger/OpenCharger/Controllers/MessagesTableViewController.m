@@ -92,18 +92,18 @@
     
     NSString *entry = messages.entry;
     if ([entry  isEqual: @"1"]) {
-        MTC.entryLabel.text = @"Entry";
+        MTC.entryLabel.text = @"entry";
     }else{
-        MTC.entryLabel.text = @"Exit";
+        MTC.entryLabel.text = @"exit";
     }
     
     NSString *power = messages.power;
-    MTC.powerLabel.text = [NSString stringWithFormat:@"Battery < %@\uFF05", power];
+    MTC.powerLabel.text = [NSString stringWithFormat:@"battery < %@\uFF05", power];
     
     NSString *allDay = messages.allday;
     //NSString *timing = messages.timing;
     if ([allDay isEqualToString:@"1"]) {
-        MTC.allDayLabel.text = @"All-day";
+        MTC.allDayLabel.text = @"all-day";
     }else{
         MTC.allDayLabel.text = messages.start;
     }
