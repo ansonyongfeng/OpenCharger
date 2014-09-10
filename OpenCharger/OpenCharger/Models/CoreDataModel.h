@@ -17,8 +17,7 @@
 @property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator ;
 
 -(NSArray *)getAllMessageRecords;
--(Messages *)getSingleMessageRecord:(NSManagedObjectID *)manageObjectID;
 
 -(void)saveData:(NSDictionary *)dataDict;
-
+-(void)updateData:(NSDictionary *)dataDict MessageID:(NSString *)thisMessageID;
 @end

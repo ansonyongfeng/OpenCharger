@@ -36,46 +36,58 @@
 }
 
 -(void)saveData: (NSDictionary *)dataDict{
-    // Add Entry to PhoneBook Data base and reset all fields
-    
-    NSLog(@"%@", dataDict);
-    
+    //NSLog(@"%@", dataDict);
     NSManagedObjectContext *context = [self managedObjectContext];
-    
     //  1
     Messages *newEntry = [NSEntityDescription insertNewObjectForEntityForName:@"OCMessages" inManagedObjectContext:context];
+    //get last and new message ID
+    NSString *newMessageID = [[NSString alloc] init];
+    NSArray *messagesRecordsArray = [self getAllMessageRecords];
+    if ([messagesRecordsArray count] < 1) {
+        newMessageID = @"1";
+    }else{
+        Messages *lastMessage = [messagesRecordsArray lastObject];
+        NSString *lastMessageID = [[NSString alloc] init];
+        lastMessageID   = lastMessage.id;
+        newMessageID    = [NSString stringWithFormat:@"%d", [lastMessageID intValue] +1 ];
+    }
+    
     //  2
+    newEntry.id         = newMessageID;
     newEntry.message    = [dataDict objectForKey:@"message"];
     newEntry.entry      = [dataDict objectForKey:@"entry"];
     newEntry.power      = [dataDict objectForKey:@"power"];
     newEntry.allday     = [dataDict objectForKey:@"allday"];
     newEntry.start      = [dataDict objectForKey:@"start"];
     newEntry.active     = [dataDict objectForKey:@"active"];
-    
+    NSLog(@"id: %@",newEntry.id);
     //  3
     NSError *error;
-    if (![_managedObjectContext save:&error]) {
+    if (![context save:&error]) {
         NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
     }
-    
 }
 
--(Messages *)getSingleMessageRecord:(NSManagedObjectID *)manageObjectID{
-    NSLog(@"AAETVC MOID: %@", manageObjectID);
+-(void)updateData:(NSDictionary *)dataDict MessageID:(NSString *)thisMessageID{
     NSArray *fetchedRecordsArray = [self getAllMessageRecords];
+    NSManagedObjectContext *context = [self managedObjectContext];
     for (int i = 0; i < [fetchedRecordsArray count]; i++)
     {
-        
         Messages *message = [fetchedRecordsArray objectAtIndex:i];
-        NSLog(@"message MOID: %@", [message objectID]);
-        if ([message objectID] == manageObjectID) {
-            return message;
+        if ([message.id isEqual: thisMessageID]) {
+            message.message    = [dataDict objectForKey:@"message"];
+            message.entry      = [dataDict objectForKey:@"entry"];
+            message.power      = [dataDict objectForKey:@"power"];
+            message.allday     = [dataDict objectForKey:@"allday"];
+            message.start      = [dataDict objectForKey:@"start"];
+            message.active     = [dataDict objectForKey:@"active"];
         }
-        return false;
     }
-    return false;
+    NSError *error;
+    if (![context save:&error]) {
+        NSLog(@"Whoops, couldn't update: %@", [error localizedDescription]);
+    }
 }
-    
 
 /**********Core Data beginn************/
 // 1

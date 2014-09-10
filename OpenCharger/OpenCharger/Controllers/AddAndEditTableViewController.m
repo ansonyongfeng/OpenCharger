@@ -77,6 +77,7 @@
 }
 
 - (void)saveMessage{
+    self.messageTextField.text = message;
     CoreDataModel *CDM = [[CoreDataModel alloc] init];
     NSDictionary *dict = @{
                             @"message"  : message,
@@ -86,8 +87,11 @@
                             @"start"    : start,
                             @"active"   : active,
                             };
-    
-    [CDM saveData:dict];
+    if (self.myMessage) {
+        [CDM updateData:dict MessageID:self.myMessage.id];
+    }else{
+        [CDM saveData:dict];
+    }
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 

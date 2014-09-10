@@ -105,7 +105,7 @@
     if ([allDay isEqualToString:@"1"]) {
         MTC.allDayLabel.text = @"All-day";
     }else{
-        //MTC.allDayLabel.text = timing;
+        MTC.allDayLabel.text = messages.start;
     }
     
     NSString *active = messages.active;
@@ -150,8 +150,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Messages *message = [objectsItemArray objectAtIndex:indexPath.row];
-    //NSManagedObjectID *objectID = [message objectID];
-    //NSLog(@"%@", objectID);
     AAETVC  = [self.storyboard instantiateViewControllerWithIdentifier:@"AddAndEdit"];
     AAETVC.myMessage = message;
     [self.navigationController pushViewController:AAETVC animated:YES];
