@@ -7,15 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Messages.h"
 
 @interface MessagesTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *messageLabel;
-@property (weak, nonatomic) IBOutlet UISwitch *activeSwitch;
-@property (weak, nonatomic) IBOutlet UILabel *entryLabel;
-@property (weak, nonatomic) IBOutlet UILabel *powerLabel;
-@property (weak, nonatomic) IBOutlet UILabel *allDayLabel;
+@property (weak, nonatomic) IBOutlet UILabel    *messageLabel;
+@property (weak, nonatomic) IBOutlet UISwitch   *activeSwitch;
+@property (weak, nonatomic) IBOutlet UILabel    *entryLabel;
+@property (weak, nonatomic) IBOutlet UILabel    *powerLabel;
+@property (weak, nonatomic) IBOutlet UILabel    *allDayLabel;
+@property (weak, nonatomic) IBOutlet UILabel    *activeLabel;
 
-@property (strong, nonatomic) NSManagedObjectID *thisObjectID;
+@property (strong, nonatomic) Messages          *myMessage;
 
 @end

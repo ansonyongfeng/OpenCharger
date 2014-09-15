@@ -51,7 +51,6 @@
         lastMessageID   = lastMessage.id;
         newMessageID    = [NSString stringWithFormat:@"%d", [lastMessageID intValue] +1 ];
     }
-    
     //  2
     newEntry.id         = newMessageID;
     newEntry.message    = [dataDict objectForKey:@"message"];
@@ -60,7 +59,6 @@
     newEntry.allday     = [dataDict objectForKey:@"allday"];
     newEntry.start      = [dataDict objectForKey:@"start"];
     newEntry.active     = [dataDict objectForKey:@"active"];
-    NSLog(@"id: %@",newEntry.id);
     //  3
     NSError *error;
     if (![context save:&error]) {

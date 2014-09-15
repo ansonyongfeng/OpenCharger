@@ -86,7 +86,7 @@
     
     Messages *messages = [objectsItemArray objectAtIndex:indexPath.row];
     
-    MTC.thisObjectID = [messages objectID];
+    MTC.myMessage = messages;
     
     MTC.messageLabel.text = messages.message;
     

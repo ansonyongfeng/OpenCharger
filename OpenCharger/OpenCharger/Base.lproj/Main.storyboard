@@ -66,6 +66,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="activeLabel" destination="rHJ-JR-NiC" id="K6f-66-16L"/>
                                     <outlet property="activeSwitch" destination="4J6-HP-A4h" id="68M-De-K4S"/>
                                     <outlet property="allDayLabel" destination="NRc-EI-p97" id="u1P-vZ-FgT"/>
                                     <outlet property="entryLabel" destination="T3p-Kv-Oyw" id="qod-Ny-M8r"/>

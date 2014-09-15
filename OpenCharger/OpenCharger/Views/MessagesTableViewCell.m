@@ -7,7 +7,7 @@
 //
 
 #import "MessagesTableViewCell.h"
-
+#import "CoreDataModel.h"
 
 @implementation MessagesTableViewCell{
 
@@ -34,17 +34,30 @@
     // Configure the view for the selected state
 }
 - (IBAction)activeSwitchChanged:(id)sender {
-    /*UISwitch *thisSwitch = (UISwitch *)sender;
-    DBCM = [[DatabankConnectModel alloc] init];
-    [DBCM openDb];
+    UISwitch *thisSwitch = (UISwitch *)sender;
+    CoreDataModel   *CDM = [[CoreDataModel alloc] init];
+    NSDictionary    *dict = [[NSDictionary alloc] init];
     if (thisSwitch.on) {
-        NSString *getItemsQuery = [NSString stringWithFormat:@"UPDATE messages SET  active = '1' WHERE id = '%@'", self.thisID];
-        [DBCM updateItem:getItemsQuery];
+        dict = @{
+                    @"message"  : self.myMessage.message,
+                    @"entry"    : self.myMessage.entry,
+                    @"power"    : self.myMessage.power,
+                    @"allday"   : self.myMessage.allday,
+                    @"start"    : self.myMessage.start,
+                    @"active"   : @"1",
+                    };
         
     }else{
-        NSString *getItemsQuery = [NSString stringWithFormat:@"UPDATE messages SET  active = '0' WHERE id = '%@'", self.thisID];
-        [DBCM updateItem:getItemsQuery];
-    }*/
+        dict = @{
+                 @"message"  : self.myMessage.message,
+                 @"entry"    : self.myMessage.entry,
+                 @"power"    : self.myMessage.power,
+                 @"allday"   : self.myMessage.allday,
+                 @"start"    : self.myMessage.start,
+                 @"active"   : @"0",
+                 };
+    }
+    [CDM updateData:dict MessageID:self.myMessage.id];
 }
 
 @end
