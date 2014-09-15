@@ -15,7 +15,7 @@
 
 @implementation SettingsTableViewController{
     NSMutableArray  *objectsItemArray;
-    NSUUID          *iBeacon1uuid;
+    NSUUID          *myUUID;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -29,14 +29,14 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    //databank
-    /*DBCM = [[DatabankConnectModel alloc] init];
-    [DBCM openDb];
-    NSString *getItemsQuery = [NSString stringWithFormat:@"SELECT * FROM setting"];
-    objectsItemArray = [DBCM getSettingItems:getItemsQuery];
-    [DBCM closeDb];*/
-    self.uuidTextField.text = [[objectsItemArray objectAtIndex:0] objectForKey:@"uuid"];
-    self.ocCodeTextField.text = [[objectsItemArray objectAtIndex:0] objectForKey:@"occode"];
+    //NSUserDefaults
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults objectForKey:@"UUID"]) {
+        self.uuidTextField.text = [defaults objectForKey:@"UUID"];
+    }
+    if ([defaults objectForKey:@"occode"]) {
+        self.ocCodeTextField.text = [defaults objectForKey:@"occode"];
+    }
 }
 
 - (void)viewDidLoad
@@ -54,7 +54,7 @@
     
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
-    [self initRegion];
+    //[self initRegion];
     
 }
 
@@ -66,22 +66,17 @@
 
 - (void)saveSetting{
     NSUUID *thisUUID= [[NSUUID alloc] initWithUUIDString:self.uuidTextField.text];
-    
     if (thisUUID) {
-        //update db
-        /*DBCM = [[DatabankConnectModel alloc] init];
-        [DBCM openDb];
-        
-        NSString *updateItemQuery = [NSString stringWithFormat:@"UPDATE setting SET uuid = '%@', occode = '%@' WHERE id = 1", self.uuidTextField.text, self.ocCodeTextField.text];
-        [DBCM updateItem:updateItemQuery];
-        [DBCM closeDb];*/
-        //init iBeacon
-        [self initBeacon:thisUUID];
+        //init iBeaconRegion
+        [self initRegion];
         [self showMessage:@"Settings already configured"];
     }else{
         [self showMessage:@"Invalid UUID"];
     }
-    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:self.uuidTextField.text forKey:@"UUID"];
+    [defaults setObject:self.ocCodeTextField.text forKey:@"occode"];
+    [defaults synchronize];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -108,27 +103,21 @@
 }
 
 - (void)initRegion {
-    //test iPad
-    //iBeacon1uuid = [[NSUUID alloc] initWithUUIDString:@"B9407F30-F5F8-466E-AFF9-25556B57FE61"];
-    //my iBeacon
-    //estimote B9407F30-F5F8-466E-AFF9-25556B57FE6D
-    
-    iBeacon1uuid = [[NSUUID alloc] initWithUUIDString:@"BA96930E-34B5-40BD-E8B9-8DB2823B07CC"];
-    self.beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:iBeacon1uuid identifier:@"Welcome"];
+    //OpenCharger UUID: BA96930E-34B5-40BD-E8B9-8DB2823B07CC
+    //Estimote UUID: B9407F30-F5F8-466E-AFF9-25556B57FE6D
+    NSUUID *thisUUID= [[NSUUID alloc] initWithUUIDString:@"BA96930E-34B5-40BD-E8B9-8DB2823B07CC"];
+    self.beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:thisUUID identifier:@"Welcome"];
     self.beaconRegion.notifyOnEntry = YES;
     self.beaconRegion.notifyOnExit = YES;
     
     // launch app when display is turned on and inside region
-    self.beaconRegion.notifyEntryStateOnDisplay = YES;
-    
+    self.beaconRegion.notifyEntryStateOnDisplay = NO;
     if ([CLLocationManager isMonitoringAvailableForClass:[CLBeaconRegion class]])
     {
         [self.locationManager startMonitoringForRegion:self.beaconRegion];
         [self.locationManager startRangingBeaconsInRegion:self.beaconRegion];
-        
-        NSLog(@"iBeacon Yes 1");
+        NSLog(@"iBeacon Yes");
     }
-    NSLog(@"iBeacon Yes 2");
 }
 
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
@@ -184,21 +173,6 @@
             
         }
     }
-}
-
-- (void)initBeacon:(NSUUID *)myUUID  {
-    NSLog(@"Beacon setted");
-    self.locationManager = [[CLLocationManager alloc] init];
-    self.locationManager.delegate = self;
-    self.beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:myUUID
-                         //major:1
-                         //minor:1
-                                                           identifier:@"com.opencharger.myRegion"];
-    // Tell location manager to start monitoring for the beacon region
-    
-    self.beaconRegion.notifyEntryStateOnDisplay = NO;
-    [self.locationManager startMonitoringForRegion:self.beaconRegion];
-    [self.locationManager startRangingBeaconsInRegion:self.beaconRegion];
 }
 
 - (void)showMessage:(NSString *) myMessage{

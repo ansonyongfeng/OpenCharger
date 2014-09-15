@@ -111,8 +111,10 @@
     NSString *active = messages.active;
     if ([active isEqualToString:@"1"]) {
         [MTC.activeSwitch setOn:YES animated:YES];
+        MTC.activeLabel.text = @"active";
     }else{
         [MTC.activeSwitch setOn:NO animated:YES];
+        MTC.activeLabel.text = @"inactive";
     }
     
     return MTC;

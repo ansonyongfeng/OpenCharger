@@ -77,7 +77,7 @@
 }
 
 - (void)saveMessage{
-    self.messageTextField.text = message;
+    message = self.messageTextField.text;
     CoreDataModel *CDM = [[CoreDataModel alloc] init];
     NSDictionary *dict = @{
                             @"message"  : message,
@@ -155,7 +155,6 @@
         self.entryLabel.text = @"Entry";
         [self.entrySwitch setOn:YES];
     }else{
-        NSLog(@"exit");
         self.entryLabel.text = @"Exit";
         [self.entrySwitch setOn:NO];
     }

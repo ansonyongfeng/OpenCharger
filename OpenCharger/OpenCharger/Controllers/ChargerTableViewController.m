@@ -45,15 +45,15 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
-    //databank
-    /*DBCM = [[DatabankConnectModel alloc] init];
-    [DBCM openDb];
-    NSString *getItemsQuery = [NSString stringWithFormat:@"SELECT * FROM setting"];
-    objectsItemArray = [DBCM getSettingItems:getItemsQuery];
-    [DBCM closeDb];*/
-    myUUID = [[objectsItemArray objectAtIndex:0] objectForKey:@"uuid"];
-    myOpenChargerCode = [[objectsItemArray objectAtIndex:0] objectForKey:@"occode"];
-    NSLog(@"%@, %@", myUUID, myOpenChargerCode);
+    //NSUserDefaults
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults objectForKey:@"UUID"]) {
+        myUUID = [defaults objectForKey:@"UUID"];
+    }
+    if ([defaults objectForKey:@"occode"]) {
+        myOpenChargerCode = [defaults objectForKey:@"occode"];
+    }
+    NSLog(@"my UUID: %@, my OpenChargerCode: %@", myUUID, myOpenChargerCode);
     
     //connect to OpenCharger
     NSLog(@"%@",self.thisPeripheral);
@@ -124,6 +124,7 @@
     UISwitch *thisSwitch = (UISwitch *)sender;
     if (thisSwitch.on) {
         [self.OC sendCodeToOpenCharger:self.thisPeripheral openChargerCode:myOpenChargerCode chargeTime:myChargeTime];
+        NSLog(@"ChargeTime: %@", myChargeTime);
     }else{
         [self.OC turnOffOpenCharger:self.thisPeripheral];
     }

@@ -46,6 +46,7 @@
                     @"start"    : self.myMessage.start,
                     @"active"   : @"1",
                     };
+        self.activeLabel.text = @"active";
         
     }else{
         dict = @{
@@ -56,6 +57,7 @@
                  @"start"    : self.myMessage.start,
                  @"active"   : @"0",
                  };
+        self.activeLabel.text = @"inactive";
     }
     [CDM updateData:dict MessageID:self.myMessage.id];
 }
